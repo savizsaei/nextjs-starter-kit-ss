@@ -2,11 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['example.com'],               // Configure for any external image sources
+    domains: ['example.com'], // Configure for any external image sources
   },
   experimental: {
-    appDir: true,                           // Uses the new app directory
-    turbo: true                             // Enables TurboPack for faster builds
+    turbo: {}, // Enables TurboPack for faster builds
   },
 };
 
