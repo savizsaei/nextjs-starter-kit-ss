@@ -1,6 +1,14 @@
 // app/(routes)/page.tsx
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function HomePage() {
-  return <div>Home Page</div>;
+  const t = useTranslations('HomePage');
+
+  return (
+    <div>
+      <h1>{t('title')}</h1>
+      Home Page
+    </div>
+  );
 }

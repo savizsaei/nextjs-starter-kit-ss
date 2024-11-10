@@ -1,7 +1,11 @@
 // context/AuthContext.tsx
 import { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext({ isAuthenticated: false, login: () => {}, logout: () => {} });
+const AuthContext = createContext({
+  isAuthenticated: false,
+  login: () => {},
+  logout: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
