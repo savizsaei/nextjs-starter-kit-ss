@@ -2,6 +2,7 @@
 import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { ReactQueryProvider } from '../context/ReactQueryProvider';
 
 export default async function RootLayout({
   children,
@@ -13,11 +14,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <header>Main Header</header>
-          <main>{children}</main>
-          <footer>Main Footer</footer>
-        </NextIntlClientProvider>
+        <ReactQueryProvider>
+          <NextIntlClientProvider messages={messages}>
+            <header>Main Header</header>
+            <main>{children}</main>
+            <footer>Main Footer</footer>
+          </NextIntlClientProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
