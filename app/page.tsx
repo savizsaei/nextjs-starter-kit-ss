@@ -2,8 +2,8 @@
 "use client";
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { ExampleComponent } from '@/components/dataFetching/ExampleQueryComponent';
-
+import { ExampleComponent } from '@/components/examples/ExampleQueryComponent';
+import { ExampleReduxComponent } from '@/components/examples/ExampleReduxComponent';
 export default function HomePage() {
   const t = useTranslations('HomePage');
 
@@ -11,6 +11,7 @@ export default function HomePage() {
     <div>
       <h1>{t('title')}</h1>
       <ExampleComponent />
+      <ExampleReduxComponent />
       Home Page
     </div>
   );
