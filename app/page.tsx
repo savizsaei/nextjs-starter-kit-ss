@@ -9,7 +9,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>{t('title')}</h1>
+      <h1 data-testid="homepage-title">{t('title')}</h1>
       <ExampleComponent />
       <ExampleReduxComponent />
       Home Page
