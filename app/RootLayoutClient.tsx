@@ -2,9 +2,9 @@
 'use client';
 import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { ReactQueryProvider } from '../context/ReactQueryProvider';
+import { ReactQueryProvider } from '@/context/ReactQueryProvider';
 import { Provider } from 'react-redux';
-import store from '../store';
+import store from '@/store/index';
 
 
 export default function RootLayoutClient({
