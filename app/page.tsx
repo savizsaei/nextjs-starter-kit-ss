@@ -4,8 +4,15 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { ExampleComponent } from '@/components/examples/ExampleQueryComponent';
 import { ExampleReduxComponent } from '@/components/examples/ExampleReduxComponent';
+import { useRouter } from 'next/navigation';
+
 export default function HomePage() {
   const t = useTranslations('HomePage');
+  const router = useRouter();
+
+  const navigateToAboutPage = () => {
+    router.push('/about');
+  };
 
   return (
     <div>
@@ -13,6 +20,7 @@ export default function HomePage() {
       <ExampleComponent />
       <ExampleReduxComponent />
       Home Page
+      <button onClick={navigateToAboutPage}>Go to About Page</button>
     </div>
   );
 }
