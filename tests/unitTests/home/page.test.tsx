@@ -4,7 +4,7 @@ import HomePage from '@/app/page'
 import { NextIntlClientProvider } from 'next-intl'
 import { ReactQueryProvider } from '@/context/ReactQueryProvider'
 import { Provider } from 'react-redux'
-import store from '../../store'
+import store from '@/store/index'
 
 const messages = { HomePage: { title: 'Home Page' } }
 
