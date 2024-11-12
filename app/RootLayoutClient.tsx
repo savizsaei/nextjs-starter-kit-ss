@@ -20,7 +20,11 @@ export default function RootLayoutClient({
       <body>
         <Provider store={store}>
           <ReactQueryProvider>
-            <NextIntlClientProvider locale={locale} messages={messages}>
+            <NextIntlClientProvider
+              locale={locale}
+              messages={messages}
+              timeZone="Europe/Paris"
+            >
               <header>Main Header</header>
               <main>{children}</main>
               <footer>Main Footer</footer>
