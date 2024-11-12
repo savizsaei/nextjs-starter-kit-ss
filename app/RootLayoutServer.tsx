@@ -9,7 +9,11 @@ export default async function RootLayoutServer({
   children: React.ReactNode;
 }) {
   const locale = 'en'; // Set your default locale or determine it dynamically
-  const messages = await getMessages({locale});
+  const messages = await getMessages({ locale });
 
-  return <RootLayoutClient locale={locale} messages={messages}>{children}</RootLayoutClient>;
+  return (
+    <RootLayoutClient locale={locale} messages={messages}>
+      {children}
+    </RootLayoutClient>
+  );
 }

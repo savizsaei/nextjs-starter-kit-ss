@@ -6,7 +6,6 @@ import { ReactQueryProvider } from '@/context/ReactQueryProvider';
 import { Provider } from 'react-redux';
 import store from '@/store/index';
 
-
 export default function RootLayoutClient({
   children,
   locale,

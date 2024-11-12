@@ -2,11 +2,7 @@
 'use client';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/index';
-import {
-  increment,
-  decrement,
-  setValue,
-} from '@/store/slices/exampleSlice';
+import { increment, decrement, setValue } from '@/store/slices/exampleSlice';
 
 export function ExampleReduxComponent() {
   const dispatch = useDispatch();
