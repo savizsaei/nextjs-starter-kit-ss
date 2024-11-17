@@ -21,11 +21,19 @@ const HeroSection = ({ id }: { id: string }) => (
     </Text>
     <Button
       text="Get Started"
+      size="large"
+      color="primary"
       onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+      className="mb-4 md:mb-0"
     />
     <Button
       text="View on GitHub"
-      onClick={() => window.open('https://github.com/your-repo', '_blank')}
+      size="large"
+      color="secondary"
+      onClick={() =>
+        window.open('https://github.com/aelabid/Next-StarterKit', '_blank')
+      }
+      className="ml-0 md:ml-4"
     />
   </Box>
 );
