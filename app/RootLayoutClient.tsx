@@ -5,6 +5,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { ReactQueryProvider } from '@/context/ReactQueryProvider';
 import { Provider } from 'react-redux';
 import store from '@/store/index';
+import Header from '@/components/layout/Header';
+import { ChakraProvider } from '@chakra-ui/react';
 
 export default function RootLayoutClient({
   children,
@@ -16,7 +18,7 @@ export default function RootLayoutClient({
   messages: any;
 }) {
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning={true}>
       <body>
         <Provider store={store}>
           <ReactQueryProvider>
@@ -25,9 +27,11 @@ export default function RootLayoutClient({
               messages={messages}
               timeZone="Europe/Paris"
             >
-              <header>Main Header</header>
-              <main>{children}</main>
-              <footer>Main Footer</footer>
+              <ChakraProvider>
+                <Header />
+                <main>{children}</main>
+                <footer>Main Footer</footer>
+              </ChakraProvider>
             </NextIntlClientProvider>
           </ReactQueryProvider>
         </Provider>
