@@ -5,8 +5,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Button as ChakraButton,
+  Collapse,
+  IconButton,
+  SimpleGrid,
 } from '@chakra-ui/react';
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import Button from '@/components/ui/Button';
 
 const ComponentsSection = ({ id }: { id: string }) => {
@@ -101,51 +104,47 @@ const ComponentsSection = ({ id }: { id: string }) => {
           The `Button` component is a versatile and reusable button element with
           various styles and sizes.
         </Text>
-        <Text fontSize="md" mb={4}>
-          <strong>Types of Buttons:</strong>
-        </Text>
-        <ul>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           {buttonData.map((button) => (
-            <li key={button.type}>{button.type}</li>
+            <Box key={button.type} textAlign="left">
+              <Heading as="h4" size="md" mb={2}>
+                {button.type}
+              </Heading>
+              <Button
+                text={button.type}
+                color={button.color}
+                size="medium"
+                onClick={() => alert(`${button.type} Clicked`)}
+                style={{ marginLeft: '10px' }}
+              />
+              <IconButton
+                mt={2}
+                aria-label={`Toggle ${button.type} code`}
+                icon={
+                  showCode[button.type] ? (
+                    <ChevronUpIcon />
+                  ) : (
+                    <ChevronDownIcon />
+                  )
+                }
+                onClick={() => toggleCodeVisibility(button.type, button.code)}
+              />
+              <Collapse in={showCode[button.type]} animateOpacity>
+                <pre
+                  style={{
+                    textAlign: 'left',
+                    backgroundColor: '#f5f5f5',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                  }}
+                >
+                  <code>{button.code}</code>
+                </pre>
+              </Collapse>
+            </Box>
           ))}
-        </ul>
-        <Text fontSize="md" mb={4}>
-          <strong>Usage:</strong>
-        </Text>
-
-        {buttonData.map((button) => (
-          <Box mt={6} key={button.type}>
-            <Heading as="h4" size="md" mb={2}>
-              {button.type}
-            </Heading>
-            <Button
-              text={button.type}
-              color={button.color}
-              size="medium"
-              onClick={() => alert(`${button.type} Clicked`)}
-              style={{ marginLeft: '10px' }}
-            />
-            <ChakraButton
-              mt={2}
-              onClick={() => toggleCodeVisibility(button.type, button.code)}
-            >
-              {showCode[button.type] ? 'Hide Code' : 'Show Code'}
-            </ChakraButton>
-            {showCode[button.type] && (
-              <pre
-                style={{
-                  textAlign: 'left',
-                  backgroundColor: '#f5f5f5',
-                  padding: '10px',
-                  borderRadius: '5px',
-                  marginTop: '10px',
-                }}
-              >
-                <code>{button.code}</code>
-              </pre>
-            )}
-          </Box>
-        ))}
+        </SimpleGrid>
       </Box>
 
       {/* Placeholder for other components */}
