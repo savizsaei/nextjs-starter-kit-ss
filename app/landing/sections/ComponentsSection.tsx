@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import Button from '@/components/ui/Button';
+import { Alert } from '@/components/ui/Alert';
 
 const ComponentsSection = ({ id }: { id: string }) => {
   const [showCode, setShowCode] = useState<{ [key: string]: boolean }>({});
@@ -79,6 +80,44 @@ const ComponentsSection = ({ id }: { id: string }) => {
 />`,
     },
   ];
+  const alertData = [
+    {
+      type: 'Info Alert',
+      status: 'info',
+      code: `<Alert
+    status="info"
+    title="Info Alert"
+    description="This is an info alert."
+  />`,
+    },
+    {
+      type: 'Warning Alert',
+      status: 'warning',
+      code: `<Alert
+    status="warning"
+    title="Warning Alert"
+    description="This is a warning alert."
+  />`,
+    },
+    {
+      type: 'Success Alert',
+      status: 'success',
+      code: `<Alert
+    status="success"
+    title="Success Alert"
+    description="This is a success alert."
+  />`,
+    },
+    {
+      type: 'Error Alert',
+      status: 'error',
+      code: `<Alert
+    status="error"
+    title="Error Alert"
+    description="This is an error alert."
+  />`,
+    },
+  ];
 
   return (
     <Box
@@ -140,6 +179,50 @@ const ComponentsSection = ({ id }: { id: string }) => {
                   }}
                 >
                   <code>{button.code}</code>
+                </pre>
+              </Collapse>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
+      <Box mt={6}>
+        <Heading as="h3" size="lg" mb={4}>
+          Alert Component
+        </Heading>
+        <Text fontSize="md" mb={4}>
+          The `Alert` component is a versatile and reusable alert element with
+          various styles and statuses.
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          {alertData.map((alert) => (
+            <Box key={alert.type} textAlign="left">
+              <Heading as="h4" size="md" mb={2}>
+                {alert.type}
+              </Heading>
+              <Alert
+                status={alert.status}
+                title={alert.type}
+                description={`This is a ${alert.type.toLowerCase()}.`}
+              />
+              <IconButton
+                mt={2}
+                aria-label={`Toggle ${alert.type} code`}
+                icon={
+                  showCode[alert.type] ? <ChevronUpIcon /> : <ChevronDownIcon />
+                }
+                onClick={() => toggleCodeVisibility(alert.type, alert.code)}
+              />
+              <Collapse in={showCode[alert.type]} animateOpacity>
+                <pre
+                  style={{
+                    textAlign: 'left',
+                    backgroundColor: '#f5f5f5',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                  }}
+                >
+                  <code>{alert.code}</code>
                 </pre>
               </Collapse>
             </Box>
