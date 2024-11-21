@@ -1,21 +1,37 @@
-// src/components/Button.tsx
+import * as Headless from '@headlessui/react';
+import clsx from 'clsx';
 import React from 'react';
-import {
-  Button as ChakraButton,
-  Spinner,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import { CSSProperties, ReactNode } from 'react';
+import { Link } from './Link';
+
+const sizeStyles = {
+  small: 'py-2 px-4 text-sm',
+  medium: 'py-3 px-5 text-base',
+  large: 'py-4 px-6 text-lg',
+};
+
+const baseStyles =
+  'relative inline-flex items-center justify-center rounded-lg border font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+const colorStyles = {
+  primary: 'bg-blue-600 text-white border-transparent hover:bg-blue-700',
+  secondary: 'bg-gray-600 text-white border-transparent hover:bg-gray-700',
+  danger: 'bg-red-600 text-white border-transparent hover:bg-red-700',
+  success: 'bg-green-600 text-white border-transparent hover:bg-green-700',
+  warning: 'bg-yellow-600 text-white border-transparent hover:bg-yellow-700',
+
+};
 
 type ButtonProps = {
-  text?: string;
-  icon?: ReactNode; // Icon component to display inside the button
-  disabled?: boolean; // Disable state
-  loading?: boolean; // Show a loading spinner
-  size?: 'small' | 'medium' | 'large'; // Size of the button
-  onClick?: () => void; // Click event handler
-  style?: CSSProperties; // Inline styles
-  className?: string; // Additional custom class names
+  text: string;
+  icon?: React.ReactNode;
+  disabled?: boolean;
+  loading?: boolean;
+  size?: keyof typeof sizeStyles;
+  color?: keyof typeof colorStyles;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+  className?: string;
+  href?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,40 +40,41 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   loading = false,
   size = 'medium',
+  color = 'primary',
   onClick,
   style,
   className = '',
+  href,
 }) => {
-  // Size styles for button padding and font size
-  const sizeStyles = {
-    small: 'py-2 px-4 text-sm',
-    medium: 'py-3 px-5 text-base',
-    large: 'py-4 px-6 text-lg',
-  };
+  const classes = clsx(
+    baseStyles,
+    sizeStyles[size],
+    colorStyles[color],
+    className,
+    { 'opacity-50 cursor-not-allowed': disabled || loading },
+  );
 
-  // Theme styles using useColorModeValue
-  const bg = useColorModeValue('#007bff', '#333333');
-  const color = useColorModeValue('#ffffff', '#ffffff');
-  const hoverBg = useColorModeValue('#0056b3', '#555555');
+  const content = (
+    <>
+      {loading && <span className="loader" />}
+      {icon && <span className="icon">{icon}</span>}
+      <span>{text}</span>
+    </>
+  );
 
-  return (
-    <ChakraButton
-      className={`${sizeStyles[size]} ${className}`}
-      bg={bg}
-      color={color}
-      _hover={{ bg: hoverBg }}
-      _disabled={{ opacity: 0.6, cursor: 'not-allowed' }}
-      isDisabled={disabled}
-      onClick={!disabled && !loading ? onClick : undefined}
+  return href ? (
+    <Link href={href} className={classes} style={style}>
+      {content}
+    </Link>
+  ) : (
+    <Headless.Button
+      onClick={onClick}
+      className={classes}
       style={style}
+      disabled={disabled || loading}
     >
-      {loading ? (
-        <Spinner size="sm" mr={text ? 2 : 0} />
-      ) : (
-        icon && <span className="mr-2">{icon}</span>
-      )}
-      {text}
-    </ChakraButton>
+      {content}
+    </Headless.Button>
   );
 };
 

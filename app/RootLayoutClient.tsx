@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from '@/store/index';
 import Header from '@/components/layout/Header';
 import { ChakraProvider } from '@chakra-ui/react';
+import '@/styles/globals.css';
 
 export default function RootLayoutClient({
   children,
