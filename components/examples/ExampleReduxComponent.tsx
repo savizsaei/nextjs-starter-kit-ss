@@ -14,22 +14,19 @@ export function ExampleReduxComponent() {
       <h1>Redux Value: {value}</h1>
       <Button
         text="Increment"
-        color="#28a745"
-        hoverColor="#218838"
+        color="primary"
         onClick={() => dispatch(increment())}
         size="large"
       />
       <Button
         text="Decrement"
-        color="#dc3545"
-        hoverColor="#c82333"
+        color="primary"
         onClick={() => dispatch(decrement())}
         size="large"
       />
       <Button
         text="Set Value to 10"
-        color="#007bff"
-        hoverColor="#0069d9"
+        color="primary"
         onClick={() => dispatch(setValue(10))}
         size="large"
       />
