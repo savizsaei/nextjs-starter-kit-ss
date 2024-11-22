@@ -12,6 +12,7 @@ import {
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import Button from '@/components/ui/Button';
 import { Alert } from '@/components/ui/Alert';
+import Card from '@/components/ui/Card';
 
 const ComponentsSection = ({ id }: { id: string }) => {
   const [showCode, setShowCode] = useState<{ [key: string]: boolean }>({});
@@ -119,6 +120,23 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
   ];
 
+  const cardData = [
+    {
+      type: 'User Card',
+      code: `<Card
+  avatarSrc="https://bit.ly/dan-abramov"
+  avatarName="Dan Abramov"
+  heading="Dan Abramov"
+  subheading="React Developer"
+  bodyText="Dan is a software engineer working on React."
+  imageSrc="https://bit.ly/2Z4KKcF"
+  imageAlt="Dan Abramov"
+  onCommentClick={() => alert('Comment Clicked')}
+  onShareClick={() => alert('Share Clicked')}
+/>`,
+    },
+  ];
+
   return (
     <Box
       id={id}
@@ -223,6 +241,56 @@ const ComponentsSection = ({ id }: { id: string }) => {
                   }}
                 >
                   <code>{alert.code}</code>
+                </pre>
+              </Collapse>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
+      <Box mt={6}>
+        <Heading as="h3" size="lg" mb={4}>
+          Card Component
+        </Heading>
+        <Text fontSize="md" mb={4}>
+          The `Card` component is a versatile and reusable card element with
+          various styles and configurations.
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          {cardData.map((card) => (
+            <Box key={card.type} textAlign="left">
+              <Heading as="h4" size="md" mb={2}>
+                {card.type}
+              </Heading>
+              <Card
+                avatarSrc="https://bit.ly/dan-abramov"
+                avatarName="Dan Abramov"
+                heading="Dan Abramov"
+                subheading="React Developer"
+                bodyText="Dan is a software engineer working on React."
+                imageSrc="https://bit.ly/2Z4KKcF"
+                imageAlt="Dan Abramov"
+                onCommentClick={() => alert('Comment Clicked')}
+                onShareClick={() => alert('Share Clicked')}
+              />
+              <IconButton
+                mt={2}
+                aria-label={`Toggle ${card.type} code`}
+                icon={
+                  showCode[card.type] ? <ChevronUpIcon /> : <ChevronDownIcon />
+                }
+                onClick={() => toggleCodeVisibility(card.type, card.code)}
+              />
+              <Collapse in={showCode[card.type]} animateOpacity>
+                <pre
+                  style={{
+                    textAlign: 'left',
+                    backgroundColor: '#f5f5f5',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                  }}
+                >
+                  <code>{card.code}</code>
                 </pre>
               </Collapse>
             </Box>
