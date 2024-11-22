@@ -10,10 +10,8 @@ import {
   CardBody,
   Image,
   CardFooter,
-  Button as ChakraButton,
 } from '@chakra-ui/react';
 import Button from './Button';
-import { Alert } from './Alert';
 
 interface CardProps {
   avatarSrc: string;

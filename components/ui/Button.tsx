@@ -18,7 +18,6 @@ const colorStyles = {
   danger: 'bg-red-600 text-white border-transparent hover:bg-red-700',
   success: 'bg-green-600 text-white border-transparent hover:bg-green-700',
   warning: 'bg-yellow-600 text-white border-transparent hover:bg-yellow-700',
-
 };
 
 type ButtonProps = {

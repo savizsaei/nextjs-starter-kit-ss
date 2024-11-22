@@ -16,13 +16,9 @@ import Card from '@/components/ui/Card';
 
 const ComponentsSection = ({ id }: { id: string }) => {
   const [showCode, setShowCode] = useState<{ [key: string]: boolean }>({});
-  const [selectedButtonCode, setSelectedButtonCode] = useState<string | null>(
-    null,
-  );
 
-  const toggleCodeVisibility = (buttonType: string, code: string) => {
+  const toggleCodeVisibility = (buttonType: string) => {
     setShowCode((prev) => ({ ...prev, [buttonType]: !prev[buttonType] }));
-    setSelectedButtonCode(code);
   };
 
   const buttonData = [
