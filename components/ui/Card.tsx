@@ -1,5 +1,6 @@
+import React from 'react';
 import {
-  Card,
+  Card as ChakraCard,
   CardHeader,
   Flex,
   Avatar,
@@ -9,52 +10,57 @@ import {
   CardBody,
   Image,
   CardFooter,
-  Button
+  Button as ChakraButton,
 } from '@chakra-ui/react';
-<Card data-type="Card" maxW="md">
-  <CardHeader data-type="CardHeader">
-    <Flex data-type="Flex" spacing="4">
-      <Flex
-        data-type="Flex"
-        flex="1"
-        gap="4"
-        alignItems="center"
-        flexWrap="wrap"
-      >
-        <Avatar
-          data-type="Avatar"
-          name="Segun Adebayo"
-          src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-        ></Avatar>
-        <Box data-type="Box">
-          <Heading data-type="Heading" size="sm">
-            Aloïs Pierre
-          </Heading>
-          <Text data-type="Text">Creator of Studio 23</Text>
-        </Box>
-      </Flex>
-    </Flex>
-  </CardHeader>
-  <CardBody data-type="CardBody">
-    <Text data-type="Text">
-      With Chakra UI, I wanted to sync the speed of development with the speed
-      of design. I wanted the developer to be just as excited as the designer to
-      create a screen.
-    </Text>
-  </CardBody>
-  <Image
-    data-type="Image"
-    objectFit="cover"
-    src="https://images.unsplash.com/photo-1546815670-5c5e437ffc6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3RhcmJ1Y2tzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-    alt="Starbucks"
-  ></Image>
+import Button from './Button';
+import { Alert } from './Alert';
 
-  <CardFooter data-type="CardFooter" justify="space-between" flexWrap="wrap">
-    <Button data-type="Button" mr="2" flex="1" leftIcon="{<ChatIcon/>}">
-      Comment
-    </Button>
-    <Button data-type="Button" flex="1" leftIcon="{<LinkIcon/>}">
-      Share
-    </Button>
-  </CardFooter>
-</Card>;
+interface CardProps {
+  avatarSrc: string;
+  avatarName: string;
+  heading: string;
+  subheading: string;
+  bodyText: string;
+  imageSrc: string;
+  imageAlt: string;
+  onCommentClick?: () => void;
+  onShareClick?: () => void;
+}
+
+const Card: React.FC<CardProps> = ({
+  avatarSrc,
+  avatarName,
+  heading,
+  subheading,
+  bodyText,
+  imageSrc,
+  imageAlt,
+  onCommentClick,
+  onShareClick,
+}) => {
+  return (
+    <ChakraCard maxW="md">
+      <CardHeader>
+        <Flex spacing="4">
+          <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+            <Avatar name={avatarName} src={avatarSrc} />
+            <Box>
+              <Heading size="sm">{heading}</Heading>
+              <Text>{subheading}</Text>
+            </Box>
+          </Flex>
+        </Flex>
+      </CardHeader>
+      <CardBody>
+        <Text>{bodyText}</Text>
+      </CardBody>
+      <Image objectFit="cover" src={imageSrc} alt={imageAlt} />
+      <CardFooter justify="space-between" flexWrap="wrap">
+        <Button text="Comment" onClick={onCommentClick} />
+        <Button text="Share" onClick={onShareClick} />
+      </CardFooter>
+    </ChakraCard>
+  );
+};
+
+export default Card;
