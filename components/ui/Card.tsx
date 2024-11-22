@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <ChakraCard maxW="md">
       <CardHeader>
-        <Flex spacing="4">
+        <Flex gap="4">
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
             <Avatar name={avatarName} src={avatarSrc} />
             <Box>

@@ -24,63 +24,63 @@ const ComponentsSection = ({ id }: { id: string }) => {
   const buttonData = [
     {
       type: 'Primary Button',
-      color: 'primary',
+      color: 'primary' as const,
       code: `<Button
-  text="Primary Button"
-  color="primary"
-  size="medium"
-  onClick={() => alert('Primary Button Clicked')}
-/>`,
+    text="Primary Button"
+    color="primary"
+    size="medium"
+    onClick={() => alert('Primary Button Clicked')}
+  />`,
     },
     {
       type: 'Secondary Button',
-      color: 'secondary',
+      color: 'secondary' as const,
       code: `<Button
-  text="Secondary Button"
-  color="secondary"
-  size="medium"
-  onClick={() => alert('Secondary Button Clicked')}
-  style={{ marginLeft: '10px' }}
-/>`,
+    text="Secondary Button"
+    color="secondary"
+    size="medium"
+    onClick={() => alert('Secondary Button Clicked')}
+    style={{ marginLeft: '10px' }}
+  />`,
     },
     {
       type: 'Danger Button',
-      color: 'danger',
+      color: 'danger' as const,
       code: `<Button
-  text="Danger Button"
-  color="danger"
-  size="medium"
-  onClick={() => alert('Danger Button Clicked')}
-  style={{ marginLeft: '10px' }}
-/>`,
+    text="Danger Button"
+    color="danger"
+    size="medium"
+    onClick={() => alert('Danger Button Clicked')}
+    style={{ marginLeft: '10px' }}
+  />`,
     },
     {
       type: 'Success Button',
-      color: 'success',
+      color: 'success' as const,
       code: `<Button
-  text="Success Button"
-  color="success"
-  size="medium"
-  onClick={() => alert('Success Button Clicked')}
-  style={{ marginLeft: '10px' }}
-/>`,
+    text="Success Button"
+    color="success"
+    size="medium"
+    onClick={() => alert('Success Button Clicked')}
+    style={{ marginLeft: '10px' }}
+  />`,
     },
     {
       type: 'Warning Button',
-      color: 'warning',
+      color: 'warning' as const,
       code: `<Button
-  text="Warning Button"
-  color="warning"
-  size="medium"
-  onClick={() => alert('Warning Button Clicked')}
-  style={{ marginLeft: '10px' }}
-/>`,
+    text="Warning Button"
+    color="warning"
+    size="medium"
+    onClick={() => alert('Warning Button Clicked')}
+    style={{ marginLeft: '10px' }}
+  />`,
     },
   ];
   const alertData = [
     {
       type: 'Info Alert',
-      status: 'info',
+      status: 'info' as const,
       code: `<Alert
     status="info"
     title="Info Alert"
@@ -89,7 +89,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Warning Alert',
-      status: 'warning',
+      status: 'warning' as const,
       code: `<Alert
     status="warning"
     title="Warning Alert"
@@ -98,7 +98,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Success Alert',
-      status: 'success',
+      status: 'success' as const,
       code: `<Alert
     status="success"
     title="Success Alert"
@@ -107,7 +107,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Error Alert',
-      status: 'error',
+      status: 'error' as const,
       code: `<Alert
     status="error"
     title="Error Alert"
@@ -180,7 +180,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
                     <ChevronDownIcon />
                   )
                 }
-                onClick={() => toggleCodeVisibility(button.type, button.code)}
+                onClick={() => toggleCodeVisibility(button.type)}
               />
               <Collapse in={showCode[button.type]} animateOpacity>
                 <pre
@@ -224,7 +224,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
                 icon={
                   showCode[alert.type] ? <ChevronUpIcon /> : <ChevronDownIcon />
                 }
-                onClick={() => toggleCodeVisibility(alert.type, alert.code)}
+                onClick={() => toggleCodeVisibility(alert.type)}
               />
               <Collapse in={showCode[alert.type]} animateOpacity>
                 <pre
@@ -274,7 +274,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
                 icon={
                   showCode[card.type] ? <ChevronUpIcon /> : <ChevronDownIcon />
                 }
-                onClick={() => toggleCodeVisibility(card.type, card.code)}
+                onClick={() => toggleCodeVisibility(card.type)}
               />
               <Collapse in={showCode[card.type]} animateOpacity>
                 <pre
