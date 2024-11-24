@@ -24,63 +24,65 @@ const ComponentsSection = ({ id }: { id: string }) => {
   const buttonData = [
     {
       type: 'Primary Button',
-      color: 'primary' as const,
+      color: 'blue',
       code: `<Button
-    text="Primary Button"
-    color="primary"
-    size="medium"
+    type="button"
+    variant="solid"
+    color="blue"
     onClick={() => alert('Primary Button Clicked')}
-  />`,
+    style={{ marginLeft: '10px' }}
+  >Primary Button</Button>`,
     },
     {
       type: 'Secondary Button',
-      color: 'secondary' as const,
+      color: 'slate',
       code: `<Button
-    text="Secondary Button"
-    color="secondary"
-    size="medium"
+    type="button"
+    variant="solid"
+    color="slate"
     onClick={() => alert('Secondary Button Clicked')}
     style={{ marginLeft: '10px' }}
-  />`,
+  >Secondary Button</Button>`,
     },
     {
       type: 'Danger Button',
-      color: 'danger' as const,
+      color: 'red',
       code: `<Button
-    text="Danger Button"
-    color="danger"
-    size="medium"
+    type="button"
+    variant="solid"
+    color="red"
     onClick={() => alert('Danger Button Clicked')}
     style={{ marginLeft: '10px' }}
-  />`,
+  >Danger Button</Button>`,
     },
     {
       type: 'Success Button',
-      color: 'success' as const,
+      color: 'green',
       code: `<Button
-    text="Success Button"
-    color="success"
-    size="medium"
+    type="button"
+    variant="solid"
+    color="green"
     onClick={() => alert('Success Button Clicked')}
     style={{ marginLeft: '10px' }}
-  />`,
+  >Success Button</Button>`,
     },
     {
       type: 'Warning Button',
-      color: 'warning' as const,
+      color: 'yellow',
       code: `<Button
-    text="Warning Button"
-    color="warning"
-    size="medium"
+    type="button"
+    variant="solid"
+    color="yellow"
     onClick={() => alert('Warning Button Clicked')}
     style={{ marginLeft: '10px' }}
-  />`,
+  >Warning Button</Button>`,
     },
   ];
+
   const alertData = [
     {
       type: 'Info Alert',
-      status: 'info' as const,
+      status: 'info',
       code: `<Alert
     status="info"
     title="Info Alert"
@@ -89,7 +91,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Warning Alert',
-      status: 'warning' as const,
+      status: 'warning',
       code: `<Alert
     status="warning"
     title="Warning Alert"
@@ -98,7 +100,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Success Alert',
-      status: 'success' as const,
+      status: 'success',
       code: `<Alert
     status="success"
     title="Success Alert"
@@ -107,7 +109,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
     {
       type: 'Error Alert',
-      status: 'error' as const,
+      status: 'error',
       code: `<Alert
     status="error"
     title="Error Alert"
@@ -129,7 +131,7 @@ const ComponentsSection = ({ id }: { id: string }) => {
   imageAlt="Dan Abramov"
   onCommentClick={() => alert('Comment Clicked')}
   onShareClick={() => alert('Share Clicked')}
-/>`,
+  />`,
     },
   ];
 
@@ -164,12 +166,14 @@ const ComponentsSection = ({ id }: { id: string }) => {
                 {button.type}
               </Heading>
               <Button
-                text={button.type}
+                type="button"
+                variant="solid"
                 color={button.color}
-                size="medium"
                 onClick={() => alert(`${button.type} Clicked`)}
                 style={{ marginLeft: '10px' }}
-              />
+              >
+                {button.type}
+              </Button>
               <IconButton
                 mt={2}
                 aria-label={`Toggle ${button.type} code`}

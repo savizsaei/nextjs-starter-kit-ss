@@ -20,21 +20,25 @@ const HeroSection = ({ id }: { id: string }) => (
       Your go-to solution for fast project setups!
     </Text>
     <Button
-      text="Get Started"
-      size="large"
-      color="primary"
+      type="button"
+      variant="solid"
+      color="blue"
       onClick={() => window.scrollTo(0, document.body.scrollHeight)}
       className="mb-4 md:mb-0"
-    />
+    >
+      Get Started
+    </Button>
     <Button
-      text="View on GitHub"
-      size="large"
-      color="secondary"
+      type="button"
+      variant="solid"
+      color="slate"
       onClick={() =>
         window.open('https://github.com/aelabid/Next-StarterKit', '_blank')
       }
       className="ml-0 md:ml-4"
-    />
+    >
+      View on GitHub
+    </Button>
   </Box>
 );
 
