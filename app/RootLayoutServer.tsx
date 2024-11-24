@@ -3,6 +3,7 @@ import React from 'react';
 import { getMessages } from 'next-intl/server';
 import RootLayoutClient from './RootLayoutClient';
 import Head from 'next/head';
+import { seoConfig } from 'config/seo';
 
 export default async function RootLayoutServer({
   children,
@@ -15,26 +16,17 @@ export default async function RootLayoutServer({
   return (
     <>
       <Head>
-        <title>Next.js Starter</title>
-        <meta
-          name="description"
-          content="A powerful and scalable Next.js starter for developers."
-        />
-        <link
-          rel="canonical"
-          href="https://next-starter-kit-neon.vercel.app/"
-        />
+        <title>{seoConfig.title}</title>
+        <meta name="description" content={seoConfig.description} />
+        <link rel="canonical" href={seoConfig.url} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Best Next.js Starter" />
+        <meta property="og:title" content={seoConfig.openGraph.title} />
         <meta
           property="og:description"
-          content="A powerful and scalable Next.js starter for developers."
+          content={seoConfig.openGraph.description}
         />
-        <meta
-          property="og:url"
-          content="https://next-starter-kit-neon.vercel.app/"
-        />
-        <meta property="og:type" content="website" />
+        <meta property="og:url" content={seoConfig.openGraph.url} />
+        <meta property="og:type" content={seoConfig.openGraph.type} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />
         <meta name="author" content="aelabid" />
