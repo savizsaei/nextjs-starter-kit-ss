@@ -11,12 +11,12 @@ import {
   VStack,
   HStack,
 } from '@chakra-ui/react';
-import logoLaravel from '@/public/images/logos/laravel.svg';
-import logoMirage from '@/public/images/logos/mirage.svg';
-import logoStatamic from '@/public/images/logos/statamic.svg';
-import logoStaticKit from '@/public/images/logos/statickit.svg';
-import logoTransistor from '@/public/images/logos/transistor.svg';
-import logoTuple from '@/public/images/logos/tuple.svg';
+import logoJest from '@/public/images/logos/jest.svg';
+import logoNext from '@/public/images/logos/next.svg';
+import logoReact from '@/public/images/logos/react.svg';
+import logoRedux from '@/public/images/logos/redux.svg';
+import logoTailwind from '@/public/images/logos/tailwind.svg';
+import logoTypescript from '@/public/images/logos/typescript.svg';
 import React from 'react';
 
 const HeroSection = ({ id }: { id: string }) => {
@@ -95,7 +95,7 @@ const HeroSection = ({ id }: { id: string }) => {
       </HStack>
       <Box mt={{ base: '36', lg: '44' }} pb="16">
         <Text fontFamily="display" fontSize="base" color={textColor}>
-          Trusted by these six companies so far
+          Built with modern, reliable tools
         </Text>
         <VStack
           mt="8"
@@ -106,20 +106,23 @@ const HeroSection = ({ id }: { id: string }) => {
         >
           {[
             [
-              { name: 'Transistor', logo: logoTransistor },
-              { name: 'Tuple', logo: logoTuple },
-              { name: 'StaticKit', logo: logoStaticKit },
+              { name: 'Next.js', logo: logoNext },
+              { name: 'React', logo: logoReact },
+              { name: 'TypeScript', logo: logoTypescript },
             ],
             [
-              { name: 'Mirage', logo: logoMirage },
-              { name: 'Laravel', logo: logoLaravel },
-              { name: 'Statamic', logo: logoStatamic },
+              { name: 'Redux', logo: logoRedux },
+              {
+                name: 'Tailwind CSS',
+                logo: logoTailwind,
+              },
+              { name: 'Jest', logo: logoJest },
             ],
           ].map((group, groupIndex) => (
             <HStack key={groupIndex} spacing={{ base: '12', sm: '12' }}>
-              {group.map((company) => (
-                <Box key={company.name} display="flex">
-                  <Image src={company.logo} alt={company.name} unoptimized />
+              {group.map((tech) => (
+                <Box key={tech.name} display="flex" mx="2">
+                  <Image src={tech.logo} alt={tech.name} unoptimized />
                 </Box>
               ))}
             </HStack>
