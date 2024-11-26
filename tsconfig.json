@@ -43,6 +43,9 @@
       ],
       "@/store/*": [
         "store/*"
+      ],
+      "@/public/*": [
+        "public/*"
       ]
     },
     "plugins": [
