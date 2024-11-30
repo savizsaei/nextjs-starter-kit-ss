@@ -20,7 +20,7 @@ const DocsSection = ({ id }: { id: string }) => (
       deployments.
     </Text>
     <Link
-      href="https://github.com/your-repo/docs"
+      href="https://github.com/aelabid/Next-StarterKit"
       target="_blank"
       rel="noopener noreferrer"
       color={useColorModeValue('teal.500', 'teal.200')}
