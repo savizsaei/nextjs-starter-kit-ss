@@ -54,8 +54,8 @@ const Card: React.FC<CardProps> = ({
       </CardBody>
       <Image objectFit="cover" src={imageSrc} alt={imageAlt} />
       <CardFooter justify="space-between" flexWrap="wrap">
-        <Button text="Comment" onClick={onCommentClick} />
-        <Button text="Share" onClick={onShareClick} />
+        <Button onClick={onCommentClick}>Comment</Button>
+        <Button onClick={onShareClick}>Share</Button>
       </CardFooter>
     </ChakraCard>
   );

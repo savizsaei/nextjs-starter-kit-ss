@@ -8,6 +8,7 @@ import store from '@/store/index';
 import Header from '@/components/layout/Header';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/globals.css';
+import Fonts from '@/styles/Fonts';
 
 export default function RootLayoutClient({
   children,
@@ -29,6 +30,7 @@ export default function RootLayoutClient({
               timeZone="Europe/Paris"
             >
               <ChakraProvider>
+                <Fonts />
                 <Header />
                 <main>{children}</main>
                 <footer>Main Footer</footer>

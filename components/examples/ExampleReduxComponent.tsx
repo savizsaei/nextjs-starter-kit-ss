@@ -12,24 +12,9 @@ export function ExampleReduxComponent() {
   return (
     <div>
       <h1>Redux Value: {value}</h1>
-      <Button
-        text="Increment"
-        color="primary"
-        onClick={() => dispatch(increment())}
-        size="large"
-      />
-      <Button
-        text="Decrement"
-        color="primary"
-        onClick={() => dispatch(decrement())}
-        size="large"
-      />
-      <Button
-        text="Set Value to 10"
-        color="primary"
-        onClick={() => dispatch(setValue(10))}
-        size="large"
-      />
+      <Button onClick={() => dispatch(increment())}>Increment</Button>
+      <Button onClick={() => dispatch(decrement())}>Decrement</Button>
+      <Button onClick={() => dispatch(setValue(10))}>Set Value to 10</Button>
     </div>
   );
 }

@@ -2,38 +2,37 @@
 import React from 'react';
 import { getMessages } from 'next-intl/server';
 import RootLayoutClient from './RootLayoutClient';
-import Head from 'next/head';
 import { seoConfig } from 'config/seo';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: seoConfig.title,
+  description: seoConfig.description,
+  openGraph: {
+    title: seoConfig.openGraph.title,
+    description: seoConfig.openGraph.description,
+    url: seoConfig.openGraph.url,
+    type: seoConfig.openGraph.type as 'website',
+  },
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  alternates: {
+    canonical: seoConfig.url,
+  },
+  authors: [{ name: 'aelabid' }],
+};
 
 export default async function RootLayoutServer({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = 'en'; // Set your default locale or determine it dynamically
+  const locale = 'en';
   const messages = await getMessages({ locale });
 
   return (
-    <>
-      <Head>
-        <title>{seoConfig.title}</title>
-        <meta name="description" content={seoConfig.description} />
-        <link rel="canonical" href={seoConfig.url} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={seoConfig.openGraph.title} />
-        <meta
-          property="og:description"
-          content={seoConfig.openGraph.description}
-        />
-        <meta property="og:url" content={seoConfig.openGraph.url} />
-        <meta property="og:type" content={seoConfig.openGraph.type} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="UTF-8" />
-        <meta name="author" content="aelabid" />
-      </Head>
-      <RootLayoutClient locale={locale} messages={messages}>
-        {children}
-      </RootLayoutClient>
-    </>
+    <RootLayoutClient locale={locale} messages={messages}>
+      {children}
+    </RootLayoutClient>
   );
 }

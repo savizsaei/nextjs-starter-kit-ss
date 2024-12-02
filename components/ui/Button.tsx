@@ -1,79 +1,70 @@
-import * as Headless from '@headlessui/react';
-import clsx from 'clsx';
 import React from 'react';
-import { Link } from './Link';
+import Link from 'next/link';
+import clsx from 'clsx';
 
-const sizeStyles = {
-  small: 'py-2 px-4 text-sm',
-  medium: 'py-3 px-5 text-base',
-  large: 'py-4 px-6 text-lg',
+const baseStyles = {
+  solid:
+    'group inline-flex items-center justify-center rounded-full py-3 px-6 text-lg font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
+  outline:
+    'group inline-flex ring-1 items-center justify-center rounded-full py-3 px-6 text-lg focus:outline-none',
 };
 
-const baseStyles =
-  'relative inline-flex items-center justify-center rounded-lg border font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2';
-
-const colorStyles = {
-  primary: 'bg-blue-600 text-white border-transparent hover:bg-blue-700',
-  secondary: 'bg-gray-600 text-white border-transparent hover:bg-gray-700',
-  danger: 'bg-red-600 text-white border-transparent hover:bg-red-700',
-  success: 'bg-green-600 text-white border-transparent hover:bg-green-700',
-  warning: 'bg-yellow-600 text-white border-transparent hover:bg-yellow-700',
+const variantStyles = {
+  solid: {
+    slate:
+      'bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900',
+    blue: 'bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
+    red: 'bg-red-600 text-white hover:text-slate-100 hover:bg-red-500 active:bg-red-800 active:text-red-100 focus-visible:outline-red-600',
+    green:
+      'bg-green-600 text-white hover:text-slate-100 hover:bg-green-500 active:bg-green-800 active:text-green-100 focus-visible:outline-green-600',
+    yellow:
+      'bg-yellow-600 text-white hover:text-slate-100 hover:bg-yellow-500 active:bg-yellow-800 active:text-yellow-100 focus-visible:outline-yellow-600',
+    white:
+      'bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white',
+  },
+  outline: {
+    slate:
+      'ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
+    white:
+      'ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white',
+  },
 };
 
-type ButtonProps = {
-  text: string;
-  icon?: React.ReactNode;
-  disabled?: boolean;
-  loading?: boolean;
-  size?: keyof typeof sizeStyles;
-  color?: keyof typeof colorStyles;
-  onClick?: () => void;
-  style?: React.CSSProperties;
-  className?: string;
-  href?: string;
-};
+type ButtonProps = (
+  | {
+      variant?: 'solid';
+      color?: keyof typeof variantStyles.solid;
+    }
+  | {
+      variant: 'outline';
+      color?: keyof typeof variantStyles.outline;
+    }
+) &
+  (
+    | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
+    | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
+        href?: undefined;
+      })
+  );
 
 const Button: React.FC<ButtonProps> = ({
-  text,
-  icon,
-  disabled = false,
-  loading = false,
-  size = 'medium',
-  color = 'primary',
-  onClick,
-  style,
-  className = '',
-  href,
+  className,
+  variant = 'solid',
+  color = 'slate',
+  ...props
 }) => {
   const classes = clsx(
-    baseStyles,
-    sizeStyles[size],
-    colorStyles[color],
+    baseStyles[variant],
+    variant === 'outline'
+      ? (variantStyles.outline as { [key: string]: string })[color]
+      : variantStyles.solid[color],
     className,
-    { 'opacity-50 cursor-not-allowed': disabled || loading },
   );
 
-  const content = (
-    <>
-      {loading && <span className="loader" />}
-      {icon && <span className="icon">{icon}</span>}
-      <span>{text}</span>
-    </>
-  );
-
-  return href ? (
-    <Link href={href} className={classes} style={style}>
-      {content}
-    </Link>
+  return typeof props.href === 'undefined' ? (
+    <button className={classes} {...props} />
   ) : (
-    <Headless.Button
-      onClick={onClick}
-      className={classes}
-      style={style}
-      disabled={disabled || loading}
-    >
-      {content}
-    </Headless.Button>
+    <Link className={classes} {...props} />
   );
 };
 
