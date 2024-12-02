@@ -56,7 +56,7 @@ const Button: React.FC<ButtonProps> = ({
   const classes = clsx(
     baseStyles[variant],
     variant === 'outline'
-      ? variantStyles.outline[color]
+      ? (variantStyles.outline as { [key: string]: string })[color]
       : variantStyles.solid[color],
     className,
   );
