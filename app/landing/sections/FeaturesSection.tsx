@@ -113,10 +113,10 @@ function FeatureClass({
   );
 }
 
-function FeaturesSection() {
+const FeaturesSection = ({ id }: { id: string }) => {
   return (
     <section
-      id="features"
+      id={id}
       aria-label="Features for simplifying everyday business tasks"
       className="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32"
     >
@@ -156,6 +156,6 @@ function FeaturesSection() {
       </Container>
     </section>
   );
-}
+};
 
 export default FeaturesSection;

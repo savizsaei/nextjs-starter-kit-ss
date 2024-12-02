@@ -21,7 +21,9 @@ const ComponentsSection = ({ id }: { id: string }) => {
     setShowCode((prev) => ({ ...prev, [buttonType]: !prev[buttonType] }));
   };
 
-  const buttonData = [
+  type ButtonColor = 'blue' | 'green' | 'red' | 'white' | 'yellow' | 'slate';
+
+  const buttonData: { type: string; color: ButtonColor; code: string }[] = [
     {
       type: 'Primary Button',
       color: 'blue',
@@ -79,7 +81,9 @@ const ComponentsSection = ({ id }: { id: string }) => {
     },
   ];
 
-  const alertData = [
+  type AlertStatus = 'info' | 'warning' | 'success' | 'error';
+
+  const alertData: { type: string; status: AlertStatus; code: string }[] = [
     {
       type: 'Info Alert',
       status: 'info',
@@ -168,7 +172,6 @@ const ComponentsSection = ({ id }: { id: string }) => {
               <Button
                 type="button"
                 variant="solid"
-                color={button.color}
                 onClick={() => alert(`${button.type} Clicked`)}
                 style={{ marginLeft: '10px' }}
               >
