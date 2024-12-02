@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import backgroundImage from '@/public/images/background-features.jpg';
-import OpenSourceIcon from '@/public/images/icons/OpenSourceIcon.svg';
 import DevStackIcon from '@/public/images/icons/DevStackIcon.svg';
 import StateManagementIcon from '@/public/images/icons/StateManagementIcon.svg';
 import I18nIcon from '@/public/images/icons/I18nIcon.svg';
