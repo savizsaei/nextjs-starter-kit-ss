@@ -16,6 +16,9 @@ export default {
           900: 'rgb(30 58 138)',
         },
       },
+      fontFamily: {
+        display: ['Sofia', 'sans-serif'],
+      },
     },
   },
   plugins: [],
