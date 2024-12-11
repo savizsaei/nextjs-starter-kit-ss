@@ -14,11 +14,11 @@ const FooterSection = ({ id }: { id: string }) => (
     textAlign="center"
   >
     <Text mb={2}>
-      &copy; {new Date().getFullYear()} Your Project Name. All rights reserved.
+      &copy; {new Date().getFullYear()} NextJs StarterKit . All rights reserved.
     </Text>
     <Text>
       <Link
-        href="https://github.com/your-repo"
+        href="https://github.com/aelabid/Next-StarterKit"
         target="_blank"
         rel="noopener noreferrer"
         color={useColorModeValue('teal.500', 'teal.200')}
