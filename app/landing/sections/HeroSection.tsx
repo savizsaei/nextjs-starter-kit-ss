@@ -9,54 +9,6 @@ const HeroSection = ({ id }: { id: string }) => {
       id={id}
       className="flex flex-col justify-center items-center min-h-screen text-center pt-16 pb-20 lg:pt-32 lg:pb-32"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="800"
-        height="800"
-        viewBox="0 0 800 800"
-      >
-        <text
-          x="125.04451"
-          y="517.16989"
-          fontFamily="Sofia"
-          fontSize="359"
-          fill="#363636"
-        >
-          N
-        </text>
-
-        <text
-          x="459.65217"
-          y="517.16989"
-          fontFamily="Sofia"
-          fontSize="359"
-          fill="#2563EB"
-        >
-          S
-        </text>
-
-        <text
-          x="120"
-          y="637.40011"
-          fontFamily="Afacad"
-          fontSize="69"
-          fontStyle="italic"
-          fill="#2563EB"
-        >
-          NEXTJS
-        </text>
-
-        <text
-          x="321.61244"
-          y="637.16989"
-          fontFamily="Afacad"
-          fontSize="69"
-          fontStyle="italic"
-          fill="#363636"
-        >
-          STARTER KIT
-        </text>
-      </svg>{' '}
       <h1 className="mx-auto max-w-4xl font-medium tracking-tight text-gray-900 text-5xl sm:text-7xl mb-6">
         Welcome to{' '}
         <span className="relative whitespace-nowrap text-blue-600">
