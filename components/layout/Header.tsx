@@ -233,26 +233,70 @@ const Header = () => {
           justify={{ base: 'left', md: 'start' }}
           align="center"
         >
-          <Link as={NextLink} href="/">
-            <Flex align="center">
-              <Box>
-                <Text
-                  fontSize={25}
-                  color="teal"
-                  bg="transparent"
-                  w="100%"
-                  h="100%"
-                  textAlign="center"
-                  justifyContent="center"
-                  alignItems="center"
-                  p="1"
-                  as="b"
+          <Link
+            as={NextLink}
+            href="/"
+            _hover={{ opacity: 0.8 }}
+            transition="opacity 0.2s"
+          >
+            <Flex align="center" justify="space-between" width="100%">
+              <Box
+                width={{ base: '180px', md: '345px' }}
+                height={{ base: '60px', md: '75px' }}
+                mt={2}
+                ml="auto"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 3500 800"
+                  style={{
+                    filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1))',
+                    display: 'block',
+                    margin: 0,
+                    padding: 0,
+                  }}
                 >
-                  N.
-                </Text>
-              </Box>
-              <Box display={{ base: 'none', md: 'flex' }} ml={2}>
-                Next StarterKit
+                  <text
+                    x="65"
+                    y="517.16989"
+                    fontFamily="Sofia"
+                    fontSize="420"
+                    fill="#363636"
+                  >
+                    N
+                  </text>
+                  <text
+                    x="459.65217"
+                    y="517.16989"
+                    fontFamily="Sofia"
+                    fontSize="420"
+                    fill="#2563EB"
+                  >
+                    S
+                  </text>
+                  <text
+                    x="800"
+                    y="517.16989"
+                    fontFamily="Afacad"
+                    fontSize="159"
+                    fontStyle="italic"
+                    fill="#2563EB"
+                  >
+                    NEXTJS
+                  </text>
+                  <text
+                    x="1200"
+                    y="517.16989"
+                    fontFamily="Afacad"
+                    fontSize="159"
+                    fontStyle="italic"
+                    fill="#363636"
+                  >
+                    STARTER KIT
+                  </text>
+                </svg>
               </Box>
             </Flex>
           </Link>
