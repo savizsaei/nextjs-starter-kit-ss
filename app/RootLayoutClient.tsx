@@ -9,6 +9,7 @@ import Header from '@/components/layout/Header';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/globals.css';
 import Fonts from '@/styles/Fonts';
+import Footer from '@/components/layout/Footer';
 
 export default function RootLayoutClient({
   children,
@@ -33,7 +34,7 @@ export default function RootLayoutClient({
                 <Fonts />
                 <Header />
                 <main>{children}</main>
-                <footer>Main Footer</footer>
+                <Footer />
               </ChakraProvider>
             </NextIntlClientProvider>
           </ReactQueryProvider>
