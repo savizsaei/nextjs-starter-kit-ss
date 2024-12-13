@@ -23,8 +23,8 @@ export default function Footer() {
             </Link>
           </div>
           <p className="mt-6 text-sm text-slate-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} NextJS StarterKit. All rights
-            reserved.
+            Copyright &copy; {new Date().getFullYear()} NextJS StarterKit. All
+            rights reserved.
           </p>
         </div>
       </Container>
