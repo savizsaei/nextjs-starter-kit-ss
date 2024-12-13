@@ -41,22 +41,6 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Tech Stack',
     href: '#stack',
   },
-  {
-    label: 'Get Started',
-    href: '#installation',
-  },
-  {
-    label: 'Components',
-    href: '#components',
-  },
-  {
-    label: 'Docs',
-    href: '#docs',
-  },
-  {
-    label: 'Testimonials',
-    href: '#testimonials',
-  },
 ];
 
 const DesktopSubNav = ({ label, href }: NavItem) => {
@@ -216,122 +200,135 @@ const MobileNav = () => {
 const Header = () => {
   const { isOpen, onToggle } = useDisclosure();
   return (
-    <Box>
-      <Flex
+    <>
+      <Box height="60px" />
+
+      <Box
+        position="fixed"
+        top="0"
+        left="0"
+        right="0"
+        zIndex={1000}
         bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
-        minH="60px"
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle="solid"
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align="center"
+        boxShadow="sm"
+        width="100%"
       >
         <Flex
-          flex={{ base: 1 }}
-          justify={{ base: 'left', md: 'start' }}
+          bg={useColorModeValue('white', 'gray.800')}
+          color={useColorModeValue('gray.600', 'white')}
+          minH="60px"
+          py={{ base: 2 }}
+          px={{ base: 4 }}
+          borderBottom={1}
+          borderStyle="solid"
+          borderColor={useColorModeValue('gray.200', 'gray.900')}
           align="center"
         >
-          <Link
-            as={NextLink}
-            href="/"
-            _hover={{ opacity: 0.8 }}
-            transition="opacity 0.2s"
-          >
-            <Flex align="center" justify="space-between" width="100%">
-              <Box
-                width={{ base: '180px', md: '345px' }}
-                height={{ base: '60px', md: '75px' }}
-                mt={2}
-                ml="auto"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 3500 800"
-                  style={{
-                    filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1))',
-                    display: 'block',
-                    margin: 0,
-                    padding: 0,
-                  }}
-                >
-                  <text
-                    x="65"
-                    y="517.16989"
-                    fontFamily="Sofia"
-                    fontSize="420"
-                    fill="#363636"
-                  >
-                    N
-                  </text>
-                  <text
-                    x="459.65217"
-                    y="517.16989"
-                    fontFamily="Sofia"
-                    fontSize="420"
-                    fill="#2563EB"
-                  >
-                    S
-                  </text>
-                  <text
-                    x="800"
-                    y="517.16989"
-                    fontFamily="Afacad"
-                    fontSize="159"
-                    fontStyle="italic"
-                    fill="#2563EB"
-                  >
-                    NEXTJS
-                  </text>
-                  <text
-                    x="1200"
-                    y="517.16989"
-                    fontFamily="Afacad"
-                    fontSize="159"
-                    fontStyle="italic"
-                    fill="#363636"
-                  >
-                    STARTER KIT
-                  </text>
-                </svg>
-              </Box>
-            </Flex>
-          </Link>
-        </Flex>
-        <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-          <DesktopNav />
-        </Flex>
-
-        <Spacer />
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify="flex-end"
-          direction="row"
-          spacing={3}
-        >
-          {/* <SearchModal /> */}
-          <ThemeToggle />
-          <Spacer />
           <Flex
-            flex={{ base: 1, md: 'auto' }}
-            ml={{ base: -2 }}
-            display={{ base: 'flex', md: 'none' }}
+            flex={{ base: 1 }}
+            justify={{ base: 'left', md: 'start' }}
+            align="center"
           >
-            <IconButton aria-label="Toggle Navigation" onClick={onToggle}>
-              {isOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
-            </IconButton>
+            <Link
+              as={NextLink}
+              href="/"
+              _hover={{ opacity: 0.8 }}
+              transition="opacity 0.2s"
+            >
+              <Flex align="center" justify="space-between" width="100%">
+                <Box
+                  width={{ base: '180px', md: '345px' }}
+                  height={{ base: '60px', md: '75px' }}
+                  mt={2}
+                  ml="auto"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 3500 800"
+                    style={{
+                      filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1))',
+                      display: 'block',
+                      margin: 0,
+                      padding: 0,
+                    }}
+                  >
+                    <text
+                      x="65"
+                      y="517.16989"
+                      fontFamily="Sofia"
+                      fontSize="420"
+                      fill="#363636"
+                    >
+                      N
+                    </text>
+                    <text
+                      x="459.65217"
+                      y="517.16989"
+                      fontFamily="Sofia"
+                      fontSize="420"
+                      fill="#2563EB"
+                    >
+                      S
+                    </text>
+                    <text
+                      x="800"
+                      y="517.16989"
+                      fontFamily="Afacad"
+                      fontSize="159"
+                      fontStyle="italic"
+                      fill="#2563EB"
+                    >
+                      NEXTJS
+                    </text>
+                    <text
+                      x="1200"
+                      y="517.16989"
+                      fontFamily="Afacad"
+                      fontSize="159"
+                      fontStyle="italic"
+                      fill="#363636"
+                    >
+                      STARTER KIT
+                    </text>
+                  </svg>
+                </Box>
+              </Flex>
+            </Link>
           </Flex>
-        </Stack>
-      </Flex>
+          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+            <DesktopNav />
+          </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
-    </Box>
+          <Spacer />
+
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify="flex-end"
+            direction="row"
+            spacing={3}
+          >
+            {/* <SearchModal /> */}
+            <ThemeToggle />
+            <Spacer />
+            <Flex
+              flex={{ base: 1, md: 'auto' }}
+              ml={{ base: -2 }}
+              display={{ base: 'flex', md: 'none' }}
+            >
+              <IconButton aria-label="Toggle Navigation" onClick={onToggle}>
+                {isOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
+              </IconButton>
+            </Flex>
+          </Stack>
+        </Flex>
+
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav />
+        </Collapse>
+      </Box>
+    </>
   );
 };
 
