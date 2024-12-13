@@ -2,25 +2,22 @@
 'use client';
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { ExampleComponent } from '@/components/examples/ExampleQueryComponent';
-import { ExampleReduxComponent } from '@/components/examples/ExampleReduxComponent';
-import { useRouter } from 'next/navigation';
+import HeroSection from './landing/sections/HeroSection';
+import FeaturesSection from './landing/sections/FeaturesSection';
+import StackSection from './landing/sections/StackSection';
+import FooterSection from './landing/sections/FooterSection';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
-  const router = useRouter();
-
-  const navigateToAboutPage = () => {
-    router.push('/about');
-  };
 
   return (
-    <div>
-      <h1 data-testid="homepage-title">{t('title')}</h1>
-      <ExampleComponent />
-      <ExampleReduxComponent />
-      Home Page
-      <button onClick={navigateToAboutPage}>Go to About Page</button>
-    </div>
+    <>
+      <main>
+        <HeroSection id="hero" />
+        <FeaturesSection id="features" />
+        <StackSection id="stack" />
+        <FooterSection id="footer" />
+      </main>
+    </>
   );
 }
