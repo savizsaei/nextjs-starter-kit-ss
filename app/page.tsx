@@ -6,6 +6,7 @@ import HeroSection from './landing/sections/HeroSection';
 import FeaturesSection from './landing/sections/FeaturesSection';
 import StackSection from './landing/sections/StackSection';
 import FooterSection from './landing/sections/FooterSection';
+import Footer from '@/components/layout/Footer';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -16,7 +17,6 @@ export default function HomePage() {
         <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />
-        <FooterSection id="footer" />
       </main>
     </>
   );
