@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import {
   Box,
   Container,
@@ -8,10 +9,7 @@ import {
   Grid,
   useColorModeValue,
   Icon,
-  VStack,
-  HStack,
 } from '@chakra-ui/react';
-import Image from 'next/image';
 import DevStackIcon from '@/public/images/icons/DevStackIcon';
 import StateManagementIcon from '@/public/images/icons/StateManagementIcon';
 import I18nIcon from '@/public/images/icons/I18nIcon';
