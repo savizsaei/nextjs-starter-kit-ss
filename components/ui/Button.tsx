@@ -11,6 +11,8 @@ interface ButtonProps {
   outlineBorderColor?: string;
   outlineHoverBg?: string;
   children: React.ReactNode;
+  onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,6 +24,8 @@ const Button: React.FC<ButtonProps> = ({
   outlineBorderColor,
   outlineHoverBg,
   children,
+  onClick,
+  style,
 }) => {
   // Default colors with dark mode support
   const defaultSolidBg = useColorModeValue('#2563eb', '#60A5FA');
@@ -50,6 +54,7 @@ const Button: React.FC<ButtonProps> = ({
           borderColor: outlineBorderColor || defaultOutlineBorderColor,
           _hover: { bg: outlineHoverBg || defaultOutlineHoverBg },
         }),
+    style,
   };
 
   if (href) {
@@ -60,7 +65,11 @@ const Button: React.FC<ButtonProps> = ({
     );
   }
 
-  return <ChakraButton {...buttonStyles}>{children}</ChakraButton>;
+  return (
+    <ChakraButton onClick={onClick} {...buttonStyles}>
+      {children}
+    </ChakraButton>
+  );
 };
 
 export default Button;

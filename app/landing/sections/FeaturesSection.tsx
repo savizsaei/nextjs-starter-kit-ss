@@ -101,7 +101,6 @@ const SwirlyDoodle = (props: any) => (
 const FeatureCard = ({ feature }: { feature: Feature }) => {
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
-  const hoverBorderColor = useColorModeValue('blue.500', 'blue.400');
   const hoverBg = useColorModeValue('gray.50', 'gray.700');
   const iconColor = useColorModeValue('#2563eb', '#60A5FA');
 
@@ -220,7 +219,7 @@ export default function FeaturesSection({ id }: { id: string }) {
           >
             Boost your development process with a powerful, feature-rich Next.js
             starter designed for speed, scalability, and developer productivity.
-            Here's what makes it stand out:
+            Here&apos;s what makes it stand out:
           </Text>
         </Box>
 
