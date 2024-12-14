@@ -1,70 +1,74 @@
 import React from 'react';
-import Link from 'next/link';
-import clsx from 'clsx';
+import NextLink from 'next/link';
+import { Button as ChakraButton, useColorModeValue } from '@chakra-ui/react';
 
-const baseStyles = {
-  solid:
-    'group inline-flex items-center justify-center rounded-full py-3 px-6 text-lg font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
-  outline:
-    'group inline-flex ring-1 items-center justify-center rounded-full py-3 px-6 text-lg focus:outline-none',
-};
-
-const variantStyles = {
-  solid: {
-    slate:
-      'bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900',
-    blue: 'bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
-    red: 'bg-red-600 text-white hover:text-slate-100 hover:bg-red-500 active:bg-red-800 active:text-red-100 focus-visible:outline-red-600',
-    green:
-      'bg-green-600 text-white hover:text-slate-100 hover:bg-green-500 active:bg-green-800 active:text-green-100 focus-visible:outline-green-600',
-    yellow:
-      'bg-yellow-600 text-white hover:text-slate-100 hover:bg-yellow-500 active:bg-yellow-800 active:text-yellow-100 focus-visible:outline-yellow-600',
-    white:
-      'bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white',
-  },
-  outline: {
-    slate:
-      'ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
-    white:
-      'ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white',
-  },
-};
-
-type ButtonProps = (
-  | {
-      variant?: 'solid';
-      color?: keyof typeof variantStyles.solid;
-    }
-  | {
-      variant: 'outline';
-      color?: keyof typeof variantStyles.outline;
-    }
-) &
-  (
-    | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
-    | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
-        href?: undefined;
-      })
-  );
+interface ButtonProps {
+  href?: string;
+  variant?: 'solid' | 'outline';
+  solidBg?: string;
+  solidHoverBg?: string;
+  solidTextColor?: string;
+  outlineBorderColor?: string;
+  outlineHoverBg?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+}
 
 const Button: React.FC<ButtonProps> = ({
-  className,
+  href,
   variant = 'solid',
-  color = 'slate',
-  ...props
+  solidBg,
+  solidHoverBg,
+  solidTextColor,
+  outlineBorderColor,
+  outlineHoverBg,
+  children,
+  onClick,
+  style,
 }) => {
-  const classes = clsx(
-    baseStyles[variant],
-    variant === 'outline'
-      ? (variantStyles.outline as { [key: string]: string })[color]
-      : variantStyles.solid[color],
-    className,
+  // Default colors with dark mode support
+  const defaultSolidBg = useColorModeValue('#2563eb', '#60A5FA');
+  const defaultSolidHoverBg = useColorModeValue('blue.500', 'blue.300');
+  const defaultSolidTextColor = useColorModeValue('white', 'gray.900');
+  const defaultOutlineBorderColor = useColorModeValue(
+    'gray.200',
+    'whiteAlpha.300',
   );
+  const defaultOutlineHoverBg = useColorModeValue('gray.50', 'whiteAlpha.200');
 
-  return typeof props.href === 'undefined' ? (
-    <button className={classes} {...props} />
-  ) : (
-    <Link className={classes} {...props} />
+  const buttonStyles = {
+    rounded: 'full',
+    px: 6,
+    py: 3,
+    fontSize: 'lg',
+    fontWeight: 'semibold',
+    ...(variant === 'solid'
+      ? {
+          bg: solidBg || defaultSolidBg,
+          color: solidTextColor || defaultSolidTextColor,
+          _hover: { bg: solidHoverBg || defaultSolidHoverBg },
+        }
+      : {
+          variant: 'outline',
+          borderColor: outlineBorderColor || defaultOutlineBorderColor,
+          _hover: { bg: outlineHoverBg || defaultOutlineHoverBg },
+        }),
+    style,
+  };
+
+  if (href) {
+    return (
+      <ChakraButton as={NextLink} href={href} {...buttonStyles}>
+        {children}
+      </ChakraButton>
+    );
+  }
+
+  return (
+    <ChakraButton onClick={onClick} {...buttonStyles}>
+      {children}
+    </ChakraButton>
   );
 };
 

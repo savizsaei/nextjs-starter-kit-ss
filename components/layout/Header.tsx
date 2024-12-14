@@ -19,12 +19,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-// import SearchModal from './SearchModal';
 import ThemeToggle from './ThemeToggle';
 
 interface NavItem {
   label: string;
-  // eslint-disable-next-line react/no-unused-prop-types
   children?: Array<NavItem>;
   href?: string;
 }
@@ -199,6 +197,9 @@ const MobileNav = () => {
 
 const Header = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const textColorPrimary = useColorModeValue('#363636', '#FFFFFF');
+  const textColorSecondary = useColorModeValue('#2563EB', '#60A5FA');
+
   return (
     <>
       <Box height="60px" />
@@ -259,7 +260,7 @@ const Header = () => {
                       y="517.16989"
                       fontFamily="Sofia"
                       fontSize="420"
-                      fill="#363636"
+                      fill={textColorPrimary}
                     >
                       N
                     </text>
@@ -268,7 +269,7 @@ const Header = () => {
                       y="517.16989"
                       fontFamily="Sofia"
                       fontSize="420"
-                      fill="#2563EB"
+                      fill={textColorSecondary}
                     >
                       S
                     </text>
@@ -278,7 +279,7 @@ const Header = () => {
                       fontFamily="Afacad"
                       fontSize="159"
                       fontStyle="italic"
-                      fill="#2563EB"
+                      fill={textColorSecondary}
                     >
                       NEXTJS
                     </text>
@@ -288,7 +289,7 @@ const Header = () => {
                       fontFamily="Afacad"
                       fontSize="159"
                       fontStyle="italic"
-                      fill="#363636"
+                      fill={textColorPrimary}
                     >
                       STARTER KIT
                     </text>

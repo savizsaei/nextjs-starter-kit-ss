@@ -1,39 +1,29 @@
 'use client';
+
 import React from 'react';
-import { TabGroup, TabList } from '@headlessui/react';
-import clsx from 'clsx';
-import Image from 'next/image';
-import { Container } from '@/components/ui/Container';
-import backgroundImage from '@/public/images/background-tech-stack.jpg';
-import DevStackIcon from '@/public/images/icons/DevStackIcon.svg';
-import StateManagementIcon from '@/public/images/icons/StateManagementIcon.svg';
-import I18nIcon from '@/public/images/icons/I18nIcon.svg';
-import CICDIcon from '@/public/images/icons/CICDIcon.svg';
-import DevEnvIcon from '@/public/images/icons/DevEnvIcon.svg';
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  Grid,
+  useColorModeValue,
+  Icon,
+} from '@chakra-ui/react';
+import DevStackIcon from '@/public/images/icons/DevStackIcon';
+import StateManagementIcon from '@/public/images/icons/StateManagementIcon';
+import I18nIcon from '@/public/images/icons/I18nIcon';
+import CICDIcon from '@/public/images/icons/CICDIcon';
+import DevEnvIcon from '@/public/images/icons/DevEnvIcon';
 
 interface Feature {
-  name: React.ReactNode;
+  name: string;
   summary: string;
   description: string;
   icon: React.ComponentType;
 }
-function SwirlyDoodle(props: any) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 281 40"
-      preserveAspectRatio="none"
-      {...props}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z"
-      />
-    </svg>
-  );
-}
-const features: Array<Feature> = [
+
+const features: Feature[] = [
   {
     name: 'Free and Open-Source',
     summary: 'Build, customize, and innovate freely!',
@@ -44,8 +34,8 @@ const features: Array<Feature> = [
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="#abd2fd"
-          className="size-6"
+          fill={useColorModeValue('#2563eb', '#60A5FA')}
+          className="size-8"
         >
           <path
             fillRule="evenodd"
@@ -96,81 +86,156 @@ const features: Array<Feature> = [
     icon: DevEnvIcon,
   },
 ];
-function FeatureClass({
-  feature,
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<'div'> & {
-  feature: Feature;
-  className?: string;
-}) {
-  return (
-    <div
-      className={clsx(
-        className,
-        'group relative mb-6  px-4 py-1 rounded-xl lg:p-6 ring-1 ring-inset ring-white/10 bg-slate-900',
-      )}
-      {...props}
-    >
-      <div className="w-9 h-9 flex items-center justify-center rounded-lg">
-        <svg aria-hidden="true" className="h-9 w-9" fill="none">
-          <feature.icon />
-        </svg>
-      </div>
-      <h3 className="mt-6 text-sm font-medium text-white">{feature.name}</h3>
-      <div className="my-3 w-8 border-t border-white"></div>
-      <p className="mt-2 font-display text-xl" style={{ color: '#abd2fd' }}>
-        {feature.summary}
-      </p>
-      <p className="mt-4 text-sm text-blue-100">{feature.description}</p>
-    </div>
-  );
-}
 
-const FeaturesSection = ({ id }: { id: string }) => {
+const SwirlyDoodle = (props: any) => (
+  <Icon
+    aria-hidden="true"
+    viewBox="0 0 418 42"
+    preserveAspectRatio="none"
+    {...props}
+  >
+    <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+  </Icon>
+);
+
+const FeatureCard = ({ feature }: { feature: Feature }) => {
+  const cardBg = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const hoverBg = useColorModeValue('gray.50', 'gray.700');
+  const iconColor = useColorModeValue('#2563eb', '#60A5FA');
+
+  const IconComponent = feature.icon;
+
   return (
-    <section
-      id={id}
-      aria-label="Features for simplifying everyday business tasks"
-      className="relative overflow-hidden pb-28 pt-20 sm:py-32"
+    <Box
+      as="button"
+      w="full"
+      bg={cardBg}
+      border="1px"
+      borderColor={borderColor}
+      rounded="lg"
+      p={6}
+      transition="all 0.2s"
+      _hover={{
+        bg: hoverBg,
+        borderColor: 'blue.400',
+        transform: 'translateY(-2px)',
+      }}
+      textAlign="left" // Add this to ensure text alignment
+      display="flex"
+      flexDirection="column"
+      alignItems="flex-start"
     >
-      <Image
-        className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%] z-0"
-        src={backgroundImage}
-        alt=""
-        width={2245}
-        height={1636}
-        unoptimized
-      />
-      <Container className="relative z-10">
-        <div className="mx-auto max-w-2xl md:text-center xl:max-w-none">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-            <span className="relative whitespace-nowrap">
-              <SwirlyDoodle className="absolute left-0 top-1/2 h-[1em] w-full fill-blue-400" />
-              <span className="relative">Why Choose</span>
-            </span>{' '}
-            This Starter?
-          </h2>
-          <p className="mt-6 mb-8 text-lg tracking-tight px-4 md:px-8">
-            Boost your development process with a powerful, feature-rich Next.js
-            starter designed for speed, scalability, and developer productivity.
-            Here’s what makes it stand out:
-          </p>
-        </div>
-        <TabGroup>
-          <TabList className="grid grid-cols-1 lg:grid-cols-3 gap-y-6 lg:gap-x-8">
-            {features.map((feature) => (
-              <FeatureClass
-                key={feature.summary}
-                feature={feature}
-                className="relative"
-              />
-            ))}
-          </TabList>
-        </TabGroup>
-      </Container>
-    </section>
+      <Box
+        w="9"
+        h="9"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        borderRadius="lg"
+      >
+        <Box as={IconComponent} w={6} h={6} color={iconColor} />
+      </Box>
+      <Text
+        mt={6}
+        fontSize="sm"
+        fontWeight="medium"
+        color={useColorModeValue('gray.900', 'white')}
+      >
+        {feature.name}
+      </Text>
+
+      <Box my={3} w="8" borderTopWidth="1px" borderColor="white" />
+
+      <Text
+        mt={2}
+        fontSize="xl"
+        fontFamily="heading"
+        color={useColorModeValue('gray.600', 'gray.300')}
+      >
+        {feature.summary}
+      </Text>
+
+      <Text
+        mt={4}
+        fontSize="sm"
+        color={useColorModeValue('gray.500', 'gray.400')}
+      >
+        {feature.description}
+      </Text>
+    </Box>
   );
 };
 
-export default FeaturesSection;
+export default function FeaturesSection({ id }: { id: string }) {
+  const textColor = useColorModeValue('gray.900', 'white');
+  const svgFillColor = useColorModeValue('blue.300', 'blue.600');
+  const paragraphColor = useColorModeValue('gray.700', 'gray.300');
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
+
+  return (
+    <Box
+      id={id}
+      as="section"
+      position="relative"
+      overflow="hidden"
+      bg={bgColor}
+      py={{ base: 16, lg: 24 }}
+    >
+      <Container maxW="container.xl" position="relative" zIndex={10}>
+        <Box
+          maxW={{ base: '2xl', xl: 'none' }}
+          mx="auto"
+          textAlign={{ base: 'left', md: 'center' }}
+        >
+          <Heading
+            as="h2"
+            fontSize={{ base: '3xl', sm: '4xl' }}
+            letterSpacing="tight"
+            color={textColor}
+            mb={6}
+          >
+            <Box as="span" position="relative" display="inline-block">
+              <SwirlyDoodle
+                position="absolute"
+                left={0}
+                top="50%"
+                h="1em"
+                w="full"
+                fill={svgFillColor}
+              />
+              <Box as="span" position="relative">
+                Why Choose
+              </Box>
+            </Box>{' '}
+            This Starter?
+          </Heading>
+          <Text
+            fontSize="lg"
+            letterSpacing="tight"
+            px={{ base: 4, md: 8 }}
+            color={paragraphColor}
+            mb={12}
+          >
+            Boost your development process with a powerful, feature-rich Next.js
+            starter designed for speed, scalability, and developer productivity.
+            Here&apos;s what makes it stand out:
+          </Text>
+        </Box>
+
+        <Grid
+          templateColumns={{
+            base: '1fr',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)',
+          }}
+          gap={8}
+        >
+          {features.map((feature) => (
+            <FeatureCard key={feature.name} feature={feature} />
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
+}

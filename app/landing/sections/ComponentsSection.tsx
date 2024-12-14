@@ -170,7 +170,6 @@ const ComponentsSection = ({ id }: { id: string }) => {
                 {button.type}
               </Heading>
               <Button
-                type="button"
                 variant="solid"
                 onClick={() => alert(`${button.type} Clicked`)}
                 style={{ marginLeft: '10px' }}
