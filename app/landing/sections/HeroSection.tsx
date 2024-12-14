@@ -76,7 +76,7 @@ const HeroSection = ({ id }: { id: string }) => {
         >
           Build faster with our powerful Next.js starter! Packed with essential
           tools like state management, React Query, I18n, CI/CD, and
-          customizable UI components, it's everything you need to kickstart
+          customizable UI components, it&apos;s everything you need to kickstart
           scalable, high-performance projects effortlessly.
         </Text>
 
