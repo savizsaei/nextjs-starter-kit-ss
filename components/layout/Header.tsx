@@ -20,6 +20,7 @@ import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface NavItem {
   label: string;
@@ -310,7 +311,7 @@ const Header = () => {
             direction="row"
             spacing={3}
           >
-            {/* <SearchModal /> */}
+            <LanguageSwitcher />
             <ThemeToggle />
             <Spacer />
             <Flex
