@@ -1,5 +1,12 @@
 {
   "HomePage": {
     "title": "Hello world!"
+  },
+  "Header": {
+    "navigation": {
+      "home": "Home",
+      "features": "Features", 
+      "techStack": "Tech Stack"
+    }
   }
 }
