@@ -61,9 +61,6 @@ Open http://localhost:3000 to view it in the browser.
 - **Tailwind CSS** for styling
 
 ## 🏁 Getting Started :
--Environment Variables
-Create a .env.local file and add any required environment variables here.
-
 Running Tests
 - *Run unit tests with Jest:*
 ```bash
