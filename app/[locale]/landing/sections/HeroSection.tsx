@@ -12,6 +12,7 @@ import {
 import Button from '@/components/ui/Button';
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import { FaGithub } from 'react-icons/fa';
 
 const HeroSection = ({ id }: { id: string }) => {
   const textColor = useColorModeValue('gray.900', 'white');
@@ -80,10 +81,11 @@ const HeroSection = ({ id }: { id: string }) => {
         </Text>
 
         <Stack direction="row" spacing={6} justify="center" mt={10}>
-          <Button href="/register">{t('buttons.getStarted')}</Button>
+          {/* <Button href="/register">{t('buttons.getStarted')}</Button> */}
           <Button
             href="https://github.com/aelabid/Next-StarterKit"
             variant="outline"
+            leftIcon={<FaGithub />}
           >
             {t('buttons.viewGithub')}
           </Button>

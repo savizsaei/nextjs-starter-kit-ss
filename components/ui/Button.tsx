@@ -13,6 +13,8 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   style?: React.CSSProperties;
+  leftIcon?: React.ReactElement;
+  rightIcon?: React.ReactElement;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -26,6 +28,8 @@ const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   style,
+  leftIcon,
+  rightIcon,
 }) => {
   // Default colors with dark mode support
   const defaultSolidBg = useColorModeValue('#2563eb', '#60A5FA');
@@ -43,6 +47,8 @@ const Button: React.FC<ButtonProps> = ({
     py: 3,
     fontSize: 'lg',
     fontWeight: 'semibold',
+    leftIcon: leftIcon,
+    rightIcon: rightIcon,
     ...(variant === 'solid'
       ? {
           bg: solidBg || defaultSolidBg,
