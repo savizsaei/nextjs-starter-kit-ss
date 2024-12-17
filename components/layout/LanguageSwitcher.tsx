@@ -1,5 +1,5 @@
 // LanguageSwitcher.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Menu,
@@ -12,7 +12,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { FiChevronDown } from 'react-icons/fi';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { useLocale } from 'next-intl';
 
 interface Language {
   code: string;
@@ -24,49 +25,49 @@ const languages: Language[] = [
   {
     code: 'en',
     name: 'English',
-    flag: 'https://flagcdn.com/w20/gb.png',
+    flag: 'https://flagcdn.com/w20/us.png',
   },
   {
     code: 'fr',
     name: 'French',
     flag: 'https://flagcdn.com/w20/fr.png',
   },
-  {
-    code: 'es',
-    name: 'Spanish',
-    flag: 'https://flagcdn.com/w20/es.png',
-  },
 ];
 
 const LanguageSwitcher = () => {
-//   const router = useRouter();
-//   const { locale } = router;
-  const currentLanguage = languages[0];
-    // languages.find((lang) => lang.code === locale) || languages[0];
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(
+    languages.find((lang) => lang.code === locale) || languages[0],
+  );
 
   const menuBg = useColorModeValue('white', 'gray.800');
   const menuHoverBg = useColorModeValue('gray.100', 'gray.700');
   const buttonBg = useColorModeValue('white', 'gray.800');
   const buttonColor = useColorModeValue('gray.600', 'gray.300');
 
-//   const handleLanguageChange = (newLocale: string) => {
-//     const { pathname, asPath, query } = router;
-//     router.push({ pathname, query }, asPath, { locale: newLocale });
-//   };
+  const handleLanguageChange = (language: Language) => {
+    setCurrentLanguage(language);
+    const normalizedPath = pathname.replace(/^\/(en|fr|ar)/, '') || '/';
+
+    router.push(normalizedPath, { locale: language.code });
+  };
 
   return (
     <Menu>
       <MenuButton
         as={Button}
-        rightIcon={<FiChevronDown />}
         bg={buttonBg}
         color={buttonColor}
-        _hover={{ bg: menuHoverBg }}
         px={4}
         py={2}
         rounded="md"
+        _hover={{ bg: menuHoverBg }}
+        aria-label={`Select language, current: ${currentLanguage.name}`}
       >
-        <HStack>
+        <HStack spacing={2}>
           <Image
             src={currentLanguage.flag}
             alt={currentLanguage.name}
@@ -74,13 +75,14 @@ const LanguageSwitcher = () => {
             height="15px"
           />
           <Text textTransform="uppercase">{currentLanguage.code}</Text>
+          <FiChevronDown />
         </HStack>
       </MenuButton>
       <MenuList bg={menuBg}>
         {languages.map((language) => (
           <MenuItem
             key={language.code}
-            // onClick={() => handleLanguageChange(language.code)}
+            onClick={() => handleLanguageChange(language)}
             _hover={{ bg: menuHoverBg }}
           >
             <HStack>

@@ -21,6 +21,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 interface NavItem {
   label: string;
@@ -29,15 +30,15 @@ interface NavItem {
 }
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Home',
+    label: 'home',
     href: '#hero',
   },
   {
-    label: 'Features',
+    label: 'features',
     href: '#features',
   },
   {
-    label: 'Tech Stack',
+    label: 'techStack',
     href: '#stack',
   },
 ];
@@ -83,6 +84,7 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const t = useTranslations('Header.navigation');
 
   return (
     <Stack direction="row" spacing={4}>
@@ -102,7 +104,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                {navItem.label}
+                {t(navItem.label)}
               </Link>
             </PopoverTrigger>
 
@@ -131,6 +133,7 @@ const DesktopNav = () => {
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
+  const t = useTranslations('Header.navigation');
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -148,7 +151,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
         >
-          {label}
+          {t(label)}
         </Text>
         {children && (
           <Icon
@@ -200,9 +203,19 @@ const Header = () => {
   const { isOpen, onToggle } = useDisclosure();
   const textColorPrimary = useColorModeValue('#363636', '#FFFFFF');
   const textColorSecondary = useColorModeValue('#2563EB', '#60A5FA');
+  const t = useTranslations();
 
   return (
     <>
+      <Text
+        id="atafin"
+        fontSize="xl"
+        fontWeight="bold"
+        textAlign="center"
+        color={useColorModeValue('gray.600', 'gray.200')}
+      >
+        {t('Header.navigation.home')}
+      </Text>
       <Box height="60px" />
 
       <Box
