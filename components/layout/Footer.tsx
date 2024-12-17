@@ -8,6 +8,7 @@ import {
   Icon,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
   const bgColor = useColorModeValue('gray.50', 'gray.800');
@@ -15,6 +16,7 @@ export default function Footer() {
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const iconColor = useColorModeValue('gray.500', 'gray.400');
   const iconHoverColor = useColorModeValue('gray.700', 'gray.200');
+  const t = useTranslations('Footer');
 
   return (
     <Box as="footer" bg={bgColor}>
@@ -49,8 +51,7 @@ export default function Footer() {
             </Link>
           </Flex>
           <Text fontSize="sm" color={textColor} mt={{ base: 6, sm: 0 }}>
-            Copyright &copy; {new Date().getFullYear()} NextJS StarterKit. All
-            rights reserved.
+            {t('copyright', { year: new Date().getFullYear() })}
           </Text>
         </Flex>
       </Container>

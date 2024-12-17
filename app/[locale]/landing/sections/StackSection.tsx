@@ -10,11 +10,11 @@ import {
   Icon,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 const features = [
   {
-    title: 'Next.js',
-    description: 'Fast by default, with config optimized for performance.',
+    key: 'nextjs',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -24,8 +24,7 @@ const features = [
     ),
   },
   {
-    title: 'Tailwind CSS',
-    description: 'A utility-first CSS framework for rapid UI development.',
+    key: 'tailwind',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -35,8 +34,7 @@ const features = [
     ),
   },
   {
-    title: 'ESlint & Prettier',
-    description: 'For clean, consistent, and error-free code.',
+    key: 'eslint',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -46,9 +44,7 @@ const features = [
     ),
   },
   {
-    title: 'Extremely strict TypeScript',
-    description:
-      'Leveraging TypeScript for unmatched type safety and robust application development.',
+    key: 'typescript',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -58,8 +54,7 @@ const features = [
     ),
   },
   {
-    title: 'Jest & React Testing Library',
-    description: 'For rock-solid unit and integration tests.',
+    key: 'testing',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -69,9 +64,7 @@ const features = [
     ),
   },
   {
-    title: 'Cypress',
-    description:
-      'Utilizing Cypress to ensure seamless user experiences through reliable and efficient testing workflows.',
+    key: 'cypress',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -81,8 +74,7 @@ const features = [
     ),
   },
   {
-    title: 'Storybook',
-    description: 'Create, test, and showcase your components.',
+    key: 'storybook',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -92,8 +84,7 @@ const features = [
     ),
   },
   {
-    title: 'Conventional commits git hook',
-    description: 'Keep your commit history neat and tidy.',
+    key: 'git',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -103,8 +94,7 @@ const features = [
     ),
   },
   {
-    title: 'Absolute imports',
-    description: 'No more spaghetti imports.',
+    key: 'imports',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -114,8 +104,7 @@ const features = [
     ),
   },
   {
-    title: 'Chakra UI',
-    description: 'Headless UI components for endless customization.',
+    key: 'chakra',
     icon: () => (
       <path
         strokeLinecap="round"
@@ -125,27 +114,23 @@ const features = [
     ),
   },
   {
-    title: 'Streamlined CI/CD Workflows',
-    description:
-      'Harnessing GitHub Actions to automate builds, tests, and deployments with precision and efficiency.',
+    key: 'cicd',
     icon: () => (
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-      ></path>
+      />
     ),
   },
   {
-    title: 'State Management Simplified',
-    description:
-      'Empowering applications with Redux for predictable and scalable state management solutions.',
+    key: 'redux',
     icon: () => (
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
-      ></path>
+      />
     ),
   },
 ];
@@ -157,6 +142,7 @@ const StackSection = ({ id }: { id: string }) => {
   const iconBgColor = useColorModeValue('blue.50', 'blue.900');
   const iconColor = useColorModeValue('blue.600', 'blue.200');
   const svgFillColor = useColorModeValue('blue.300', 'blue.600');
+  const t = useTranslations('HomePage.stack');
 
   return (
     <Box
@@ -176,7 +162,7 @@ const StackSection = ({ id }: { id: string }) => {
             letterSpacing="tight"
             mb={6}
           >
-            Tech Stack{' '}
+            {t('title')}{' '}
             <Box
               as="span"
               position="relative"
@@ -193,7 +179,7 @@ const StackSection = ({ id }: { id: string }) => {
                 zIndex: -1,
               }}
             >
-              Overview
+              {t('overview')}
             </Box>
           </Heading>
           <Text
@@ -202,9 +188,7 @@ const StackSection = ({ id }: { id: string }) => {
             maxW="4xl"
             mx="auto"
           >
-            Boost your development process with a powerful, feature-rich Next.js
-            starter designed for speed, scalability, and developer productivity.
-            Here&apos;s what makes it stand out:
+            {t('description')}
           </Text>
         </Box>
 
@@ -213,9 +197,9 @@ const StackSection = ({ id }: { id: string }) => {
           spacing={10}
           px={{ base: 4, sm: 6, lg: 8 }}
         >
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <VStack
-              key={index}
+              key={feature.key}
               align="center"
               spacing={4}
               p={6}
@@ -257,10 +241,10 @@ const StackSection = ({ id }: { id: string }) => {
                 fontWeight="bold"
                 color={textColor}
               >
-                {feature.title}
+                {t(`features.${feature.key}.title`)}
               </Heading>
               <Text color={subTextColor} textAlign="center">
-                {feature.description}
+                {t(`features.${feature.key}.description`)}
               </Text>
             </VStack>
           ))}
