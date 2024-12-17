@@ -26,6 +26,14 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: seoConfig.url,
     },
     authors: [{ name: 'aelabid' }],
+    keywords: [
+      'next.js',
+      'react',
+      'typescript',
+      'starter',
+      'boilerplate',
+      'nextjs starter',
+    ],
   };
 }
 
