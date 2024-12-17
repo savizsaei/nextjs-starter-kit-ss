@@ -15,20 +15,18 @@ import StateManagementIcon from '@/public/images/icons/StateManagementIcon';
 import I18nIcon from '@/public/images/icons/I18nIcon';
 import CICDIcon from '@/public/images/icons/CICDIcon';
 import DevEnvIcon from '@/public/images/icons/DevEnvIcon';
+import { useTranslations } from 'next-intl';
 
-interface Feature {
-  name: string;
-  summary: string;
-  description: string;
-  icon: React.ComponentType;
-}
+// interface Feature {
+//   name: string;
+//   summary: string;
+//   description: string;
+//   icon: React.ComponentType;
+// }
 
-const features: Feature[] = [
+const features = [
   {
-    name: 'Free and Open-Source',
-    summary: 'Build, customize, and innovate freely!',
-    description:
-      'Our Next.js starter is fully open-source, allowing you to contribute, adapt, and stay in sync with the latest industry standards—all without any cost.',
+    key: 'openSource',
     icon: function OpenSourceIcon() {
       return (
         <svg
@@ -46,45 +44,11 @@ const features: Feature[] = [
       );
     },
   },
-  {
-    name: 'Modern Development Stack',
-    summary:
-      'Experience seamless development with Next.js, React, and TypeScript.',
-    description:
-      'Our starter is designed with scalability in mind, featuring React Query for data fetching, Redux for state management, and Tailwind CSS for rapid UI styling.',
-    icon: DevStackIcon,
-  },
-  {
-    name: 'Optimized State Management',
-    summary: 'Handle complex state easily with Redux and React Query.',
-    description:
-      'This combination ensures efficient data fetching, caching, and global state management, making your applications fast and responsive.',
-    icon: StateManagementIcon,
-  },
-  {
-    name: 'Internationalization (i18n)',
-    summary:
-      'Expand your project’s reach across the globe with built-in i18n support.',
-    description:
-      'Effortlessly localize your app to enhance user experience and attract a diverse audience with minimal setup.',
-    icon: I18nIcon,
-  },
-  {
-    name: 'Robust CI/CD & Testing Setup',
-    summary:
-      'Focus on development while our GitHub Actions pipeline handles automated testing, linting, and deployment checks.',
-    description:
-      'Unit, integration, and end-to-end testing are integrated for a rock-solid foundation.',
-    icon: CICDIcon,
-  },
-  {
-    name: 'Developer-First Environment',
-    summary:
-      'Enjoy a clean, maintainable codebase with tools like ESLint, Prettier, and TypeScript.',
-    description:
-      'Our starter is optimized for productivity, including reusable UI components, hooks, and a modular architecture designed for fast, scalable development.',
-    icon: DevEnvIcon,
-  },
+  { key: 'devStack', icon: DevStackIcon },
+  { key: 'stateManagement', icon: StateManagementIcon },
+  { key: 'i18n', icon: I18nIcon },
+  { key: 'cicd', icon: CICDIcon },
+  { key: 'devEnv', icon: DevEnvIcon },
 ];
 
 const SwirlyDoodle = (props: any) => (
@@ -98,13 +62,20 @@ const SwirlyDoodle = (props: any) => (
   </Icon>
 );
 
-const FeatureCard = ({ feature }: { feature: Feature }) => {
+const FeatureCard = ({
+  featureKey,
+  icon: IconComponent,
+}: {
+  featureKey: string;
+  icon: React.ComponentType;
+}) => {
+  const t = useTranslations('HomePage.features.items');
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const hoverBg = useColorModeValue('gray.50', 'gray.700');
   const iconColor = useColorModeValue('#2563eb', '#60A5FA');
 
-  const IconComponent = feature.icon;
+  // const IconComponent = feature.icon;
 
   return (
     <Box
@@ -142,10 +113,10 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
         fontWeight="medium"
         color={useColorModeValue('gray.900', 'white')}
       >
-        {feature.name}
+        {t(`${featureKey}.name`)}
       </Text>
 
-      <Box my={3} w="8" borderTopWidth="1px" borderColor="white" />
+      <Box my={3} w="8" borderTopWidth="1px" borderColor={iconColor} />
 
       <Text
         mt={2}
@@ -153,7 +124,7 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
         fontFamily="heading"
         color={useColorModeValue('gray.600', 'gray.300')}
       >
-        {feature.summary}
+        {t(`${featureKey}.summary`)}
       </Text>
 
       <Text
@@ -161,7 +132,7 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
         fontSize="sm"
         color={useColorModeValue('gray.500', 'gray.400')}
       >
-        {feature.description}
+        {t(`${featureKey}.description`)}
       </Text>
     </Box>
   );
@@ -172,6 +143,7 @@ export default function FeaturesSection({ id }: { id: string }) {
   const svgFillColor = useColorModeValue('blue.300', 'blue.600');
   const paragraphColor = useColorModeValue('gray.700', 'gray.300');
   const bgColor = useColorModeValue('gray.50', 'gray.900');
+  const t = useTranslations('HomePage.features');
 
   return (
     <Box
@@ -205,10 +177,10 @@ export default function FeaturesSection({ id }: { id: string }) {
                 fill={svgFillColor}
               />
               <Box as="span" position="relative">
-                Why Choose
+                {t('title.prefix')}
               </Box>
             </Box>{' '}
-            This Starter?
+            {t('title.suffix')}
           </Heading>
           <Text
             fontSize="lg"
@@ -217,9 +189,7 @@ export default function FeaturesSection({ id }: { id: string }) {
             color={paragraphColor}
             mb={12}
           >
-            Boost your development process with a powerful, feature-rich Next.js
-            starter designed for speed, scalability, and developer productivity.
-            Here&apos;s what makes it stand out:
+            {t('description')}
           </Text>
         </Box>
 
@@ -232,7 +202,11 @@ export default function FeaturesSection({ id }: { id: string }) {
           gap={8}
         >
           {features.map((feature) => (
-            <FeatureCard key={feature.name} feature={feature} />
+            <FeatureCard
+              key={feature.key}
+              featureKey={feature.key}
+              icon={feature.icon}
+            />
           ))}
         </Grid>
       </Container>
