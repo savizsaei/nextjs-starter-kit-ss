@@ -3,7 +3,7 @@
     "title": "Bonjour le monde!",
     "hero": {
       "welcome": "Bienvenue sur",
-      "title": "Kit de démarrage Next.js",
+      "title": "Kit Next.js",
       "description": "Construisez plus rapidement avec notre puissant kit de démarrage Next.js ! Équipé d'outils essentiels comme la gestion d'état, React Query, I18n, CI/CD et des composants UI personnalisables, c'est tout ce dont vous avez besoin pour démarrer des projets évolutifs et performants sans effort.",
       "buttons": {
         "getStarted": "Commencer",

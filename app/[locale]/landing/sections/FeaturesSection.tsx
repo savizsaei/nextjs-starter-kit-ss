@@ -158,7 +158,7 @@ export default function FeaturesSection({ id }: { id: string }) {
         <Box
           maxW={{ base: '2xl', xl: 'none' }}
           mx="auto"
-          textAlign={{ base: 'left', md: 'center' }}
+          textAlign={{ base: 'center', md: 'center' }}
         >
           <Heading
             as="h2"
