@@ -4,7 +4,7 @@ A powerful and highly customizable Next.js starter to kickstart frontend project
 
 ## ✨ Key Features :
 
-- **Next.js 13** with App Router
+- **Next.js 15** with App Router
 - **TypeScript** for safer code and better developer experience
 - **React Query** for efficient data fetching and caching
 - **Redux** for robust state management
