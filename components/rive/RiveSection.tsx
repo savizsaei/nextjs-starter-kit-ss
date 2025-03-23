@@ -13,8 +13,9 @@ import Button from '@/components/ui/Button';
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { FaGithub } from 'react-icons/fa';
+import RiveSimple from '@/components/rive/RiveSimple';
 
-const HeroSection = ({ id }: { id: string }) => {
+const RiveSection = ({ id }: { id: string }) => {
   const textColor = useColorModeValue('gray.900', 'white');
   const highlightColor = useColorModeValue('#2563eb', '#60A5FA'); // blue-600 for light, blue-400 for dark
   const svgFillColor = useColorModeValue('blue.300', 'blue.600');
@@ -81,6 +82,8 @@ const HeroSection = ({ id }: { id: string }) => {
         </Text>
         <Stack direction="row" spacing={6} justify="center" mt={10}>
           {/* <Button href="/register">{t('buttons.getStarted')}</Button> */}
+          
+          <RiveSimple />  
           <Button
             href="https://github.com/aelabid/Next-StarterKit"
             variant="outline"
@@ -94,4 +97,4 @@ const HeroSection = ({ id }: { id: string }) => {
   );
 };
 
-export default HeroSection;
+export default RiveSection;

@@ -1,11 +1,13 @@
 // app/(routes)/page.tsx
-// 'use client';
+'use client';
 import React from 'react';
 // import { useTranslations } from 'next-intl';
 import HeroSection from './landing/sections/HeroSection';
 import FeaturesSection from './landing/sections/FeaturesSection';
 import StackSection from './landing/sections/StackSection';
+import RiveSimple from '@/components/rive/RiveSimple';
 // import { getIntl } from '@/i18n/request';
+
 
 export default async function HomePage() {
   // const t = useTranslations('HomePage');
@@ -14,6 +16,7 @@ export default async function HomePage() {
   return (
     <>
       <main>
+        <RiveSimple />
         <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />
