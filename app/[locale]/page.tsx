@@ -6,6 +6,8 @@ import HeroSection from './landing/sections/HeroSection';
 import FeaturesSection from './landing/sections/FeaturesSection';
 import StackSection from './landing/sections/StackSection';
 // import { getIntl } from '@/i18n/request';
+// Import ExampleComponent
+import ClientWrapper from '@/components/examples/ClientWrapper';
 
 export default async function HomePage() {
   // const t = useTranslations('HomePage');
@@ -17,6 +19,7 @@ export default async function HomePage() {
         <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />
+        <ClientWrapper />
       </main>
     </>
   );
