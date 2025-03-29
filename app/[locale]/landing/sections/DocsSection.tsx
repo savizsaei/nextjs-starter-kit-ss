@@ -7,7 +7,7 @@ const DocsSection = ({ id }: { id: string }) => (
   <Box
     id={id}
     className="docs-section"
-    bg={useColorModeValue('gray.50', 'gray.800')}
+    bg={useColorModeValue('blue.50', 'blue.800')}
     py={10}
     px={5}
     textAlign="center"

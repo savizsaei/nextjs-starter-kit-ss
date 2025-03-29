@@ -39,7 +39,11 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'techStack',
-    href: '#stack',
+    href: '#stack', // GC these look like they are anchors to parts of the home page.. use of # is old school doc symbol
+  },
+  {
+    label: 'contact',
+    href: '/contact', // GC I am guessing this s a relative link, it worked. added to jump to new page
   },
 ];
 

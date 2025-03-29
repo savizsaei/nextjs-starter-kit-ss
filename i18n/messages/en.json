@@ -109,7 +109,8 @@
     "navigation": {
       "home": "Home",
       "features": "Features",
-      "techStack": "Tech Stack"
+      "techStack": "Tech Stack",
+      "contact": "Contact Form"
     }
   },
   "Footer": {
