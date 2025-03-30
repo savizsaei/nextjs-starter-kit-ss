@@ -1,16 +1,13 @@
 // components/examples/ExampleQueryComponent.tsx
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import ArtGallery from './ArtGallery1'; // Import the new component
 
 async function fetchExampleData() {
   const { data } = await axios.get('/api');
   return data;
 }
 
-async function fetchUserData() {
-  const { data } = await axios.get('/api/user');
-  return data;
-}
 
 export function ExampleComponent() {
   const { data, isLoading, error } = useQuery({
@@ -23,30 +20,14 @@ export function ExampleComponent() {
 
   return (
     <div>
-      <h1>Example Data</h1>
-      <pre>{JSON.stringify(data, null, 2)}
-      <UserProfile/>
+      <pre>
+        <ArtGallery />
+        {JSON.stringify(data, null, 2)}
       </pre>
+      <h1>Example Data</h1>
+      
     </div>
   );
 }
 
 
-function UserProfile() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['userData'],
-    queryFn: fetchUserData,
-  });
-
-  if (isLoading) return <p>Loading user data...</p>;
-  if (error) return <p>Error loading user data</p>;
-
-  return (
-    <div>
-      <h2>User Profile</h2>
-      <p>Name: {data.name}</p>
-      <p>Email: {data.email}</p>
-      <p>Role: {data.role}</p>
-    </div>
-  );
-}

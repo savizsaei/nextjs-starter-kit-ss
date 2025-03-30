@@ -19,12 +19,15 @@ Clone the repository, install dependencies, and start the development server.
 ```bash
 git clone https://github.com/aelabid/Next-StarterKit.git
 ```
+
 ```bash
 cd Next-StarterKit
 ```
+
 ```bash
 npm install
 ```
+
 ```bash
 npm run dev
 ```
@@ -32,6 +35,7 @@ npm run dev
 Open http://localhost:3000 to view it in the browser.
 
 ## 📂 Folder Structure :
+
 ```bash
 ├── app/
 │   ├── (routes)/
@@ -53,26 +57,33 @@ Open http://localhost:3000 to view it in the browser.
 └── i18n/
 ```
 
-
 ## 🛠️ Technologies Used :
+
 - **React Query** for API requests
 - **Redux** for local state
 - **Jest & Storybook** for testing
 - **Tailwind CSS** for styling
 
 ## 🏁 Getting Started :
+
 Running Tests
-- *Run unit tests with Jest:*
+
+- _Run unit tests with Jest:_
+
 ```bash
 npm run test
 ```
-- *Run end-to-end tests with Cypress:*
+
+- _Run end-to-end tests with Cypress:_
+
 ```bash
 npm run cypress:open
 ```
 
 ## 🤝 Contributing :
+
 We welcome contributions! Please follow our contributing guidelines and adhere to the code of conduct.
 
 ## 📝 License :
+
 Distributed under the MIT License. See LICENSE for more information.
