@@ -10,6 +10,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/globals.css';
 import Fonts from '@/styles/Fonts';
 import Footer from '@/components/layout/Footer';
+import './Card.css';
 
 export default function RootLayoutClient({
   children,

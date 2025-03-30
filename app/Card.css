@@ -1,0 +1,77 @@
+img {
+
+    border-radius: 25px;
+}
+
+.App-header {
+    background-image: url('../public/bg/twins.png');
+    background-size: cover;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.list {
+    padding: 25px;
+}
+
+.select-box {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.feature-image {
+    margin: 25px;
+}
+
+.logo {
+    width: 5%;
+    height: auto;
+}
+
+.card {
+    background-color: rgb(211, 216, 219);
+    padding: 5px;
+    margin: 20px;
+    /*margin-left: 35%;
+    margin-right: 35%; */
+    border-radius: 15px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 15px;
+}
+
+.stats-box {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    /* align-items: center; */
+}
+
+.stats-box > div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.stat-category {
+    font-weight: bold;
+}
+
+body{
+    background-color: rgb(181, 182, 184);
+    font-size: 20px;
+}
+
+
+canvas {
+    width: 300px;
+    height: 300px;
+}

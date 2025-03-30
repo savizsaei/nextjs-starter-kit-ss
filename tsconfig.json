@@ -62,7 +62,7 @@
     "**/*.tsx",
     "next-env.d.ts",
     ".next/types/**/*.ts"
-, "next.config.js", "next-sitemap.config.js"  ],
+, "next.config.js", "next-sitemap.config.js", "components/rive/ArtComponent.jsx", "components/rive/ArtComponent.jsx"  ],
   "exclude": [
     "node_modules"
   ]

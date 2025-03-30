@@ -5,7 +5,7 @@ import React from 'react';
 import HeroSection from './landing/sections/HeroSection';
 import FeaturesSection from './landing/sections/FeaturesSection';
 import StackSection from './landing/sections/StackSection';
-import RiveSimple from '@/components/rive/RiveSimple';
+import ArtComponent from '@/components/rive/ArtComponent';
 // import { getIntl } from '@/i18n/request';
 
 
@@ -16,7 +16,7 @@ export default async function HomePage() {
   return (
     <>
       <main>
-        <RiveSimple />
+        <ArtComponent />
         <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />

@@ -13,7 +13,7 @@ import Button from '@/components/ui/Button';
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { FaGithub } from 'react-icons/fa';
-import RiveSimple from '@/components/rive/RiveSimple';
+import RiveSimple from '@/components/rive/ArtComponent';
 
 const RiveSection = ({ id }: { id: string }) => {
   const textColor = useColorModeValue('gray.900', 'white');
