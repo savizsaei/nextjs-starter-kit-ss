@@ -1,7 +1,7 @@
 // components/examples/ExampleQueryComponent.tsx
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import ArtGallery from './ArtGallery1'; // Import the new component
+import ArtGallery from '../ArtGallary/ArtGallery1'; // Import the new component
 
 async function fetchExampleData() {
   const { data } = await axios.get('/api');

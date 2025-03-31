@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from 'react';
 
-const ArtGallery = () => {
+const ArtGallery = ({ id }: { id?: string }) => {
     const artPieces = [
         { title: 'Fragmented Motion', image: '/ArtImages/art1.jpg', description: 'This pastel drawing on tinted paper depicts a dynamic human figure in motion, created with expressive and energetic strokes. The figure appears to be wearing headphones or headgear, with a strong sense of movement in the limbs. The use of warm and cool colors, along with loose lines, gives a feeling of fluidity and emotion.' },
         { title: 'Chaos in Patterns', image: '/ArtImages/art2.jpg', description: 'This triptych consists of three abstract pieces filled with dense, angular black lines. The composition resembles a chaotic network of marks, possibly created with ink or charcoal on paper. The repetition and overlapping of the lines create a sense of rhythm, movement, and intensity, evoking themes of complexity and disorder within structure.' },

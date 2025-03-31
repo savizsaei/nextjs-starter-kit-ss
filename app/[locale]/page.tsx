@@ -8,7 +8,7 @@ import StackSection from './landing/sections/StackSection';
 // import { getIntl } from '@/i18n/request';
 // Import ExampleComponent
 //import ClientWrapper from '@/components/examples/ClientWrapper';
-import ArtGallery from '../../components/examples/ArtGallery1'; // Adjusted import path
+import ArtGallery from '../../components/ArtGallary/ArtGallery1'; // Adjusted import path
 export default async function HomePage() {
   // const t = useTranslations('HomePage');
   // const intl = await getIntl(locale);
@@ -16,9 +16,9 @@ export default async function HomePage() {
   return (
     <>
       <main>
-        <ArtGallery />{/* Render the ArtGallery component */}
          {/* <ClientWrapper /> */} 
         <HeroSection id="hero" />
+        <ArtGallery id="art" />{/* Render the ArtGallery component */}
         <FeaturesSection id="features" />
         <StackSection id="stack" />
       

@@ -34,6 +34,10 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '#hero',
   },
   {
+    label: 'artGallery',
+    href: '#art',
+  },
+  {
     label: 'features',
     href: '#features',
   },
@@ -104,7 +108,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                {t(navItem.label)}
+                {navItem.label}
               </Link>
             </PopoverTrigger>
 
@@ -151,7 +155,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
         >
-          {t(label)}
+          {label}
         </Text>
         {children && (
           <Icon
