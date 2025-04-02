@@ -38,7 +38,7 @@ const ArtGallery = ({ id }: { id?: string }) => {
     };
 
     return (
-        <div style={{ padding: "20px" }}>
+            <div id="art" style={{ padding: "20px" }}>
             <h1 style={{ fontSize: "2em", marginBottom: "20px", textAlign: "center" }}>Cincinnati Art Gallery</h1>
             
             <div style={{ position: 'relative', maxWidth: '1200px', margin: 'auto' }}>
