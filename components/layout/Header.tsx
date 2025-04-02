@@ -29,17 +29,21 @@ interface NavItem {
   href?: string;
 }
 const NAV_ITEMS: Array<NavItem> = [
+  // {
+  //   label: 'home',
+  //   href: '#hero',
+  // },
+  // {
+  //   label: 'features',
+  //   href: '#features',
+  // },
+  // {
+  //   label: 'techStack',
+  //   href: '#stack', // GC these look like they are anchors to parts of the home page.. use of # is old school doc symbol
+  // },
   {
-    label: 'home',
-    href: '#hero',
-  },
-  {
-    label: 'features',
-    href: '#features',
-  },
-  {
-    label: 'techStack',
-    href: '#stack',
+    label: 'contact',
+    href: '/contact', // GC I am guessing this s a relative link, it worked. added to jump to new page
   },
 ];
 
