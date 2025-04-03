@@ -17,9 +17,9 @@ export default async function HomePage() {
     <>
       <main>
         <ArtComponent id="art" />
-        <HeroSection id="hero" />
+        {/* <HeroSection id="hero" />
         <FeaturesSection id="features" />
-        <StackSection id="stack" />
+        <StackSection id="stack" /> */}
       </main>
     </>
   );

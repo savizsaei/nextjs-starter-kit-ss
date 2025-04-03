@@ -2,7 +2,6 @@
 
 import { useRive } from '@rive-app/react-canvas';
 import { useState } from 'react';
-import Image from 'next/image'
 
 const cards = [
   {
@@ -13,7 +12,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/roundy 8.png',
+    image: './illustrations/roundy 8.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -53,7 +52,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/CritterCreature.png',
+    image: './illustrations/CritterCreature.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -91,7 +90,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/head Skewed.png',
+    image: './illustrations/head Skewed.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -129,7 +128,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/Leo.png',
+    image: './illustrations/Leo.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -167,7 +166,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/Head3.png',
+    image: './illustrations/Head3.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -205,7 +204,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/Jogger.png',
+    image: './illustrations/Jogger.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -243,7 +242,7 @@ const cards = [
     species: 'Ubunamite',
     home_planet: 'Ubunium',
     faction: 'Neutral',
-    image: './images/Monster.png',
+    image: './illustrations/Monster.png',
     strength: 5,
     height_cm: 280,
     weight_lbs: 3104,
@@ -281,7 +280,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/OlderMan.png',
+    image: './illustrations/OlderMan.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -319,7 +318,7 @@ const cards = [
     species: 'human',
     home_planet: 'Earth',
     faction: 'Good',
-    image: './images/treeman.png',
+    image: './illustrations/treeman.png',
     strength: 2,
     height_cm: 180,
     weight_lbs: 160,
@@ -354,23 +353,22 @@ const cards = [
 export default function ArtComponent() {
   return (
     <div>
-      <RiveSimple /> 
+      <RiveSimple source={'./rive/Zoot.riv'} stateMachine={'Movement'} autoplay={true} />
       <List cards={cards} />
       <Card cards={cards} />
     </div>
   )
 }
 
-function RiveSimple() {
+function RiveSimple({source, stateMachine, autoplay}) {
   const { rive, RiveComponent } = useRive({
-    src: './rive/fc_reveal_a.riv',
+    src: './rive/fc_reveal_b.riv',
     stateMachines: "bumpy",
-    autoplay: false,
+    autoplay: true,
   });
 
   return (
-    <div style={{height: '400px', width: '400px', margin: 'auto'}}>
-
+    <div style={{height: '200px', width: '200px', margin: 'auto'}}>
       <RiveComponent
         onMouseEnter={() => rive && rive.play()}
         onMouseLeave={() => rive && rive.pause()}
@@ -382,64 +380,61 @@ function RiveSimple() {
 
 function List({cards}) {
   const [featuredCardId, setFeaturedCardId] = useState(1);
+  const [cardToFeature, setCardToFeature] = useState(cards[0]);
+  function handleClick (){
+    setCardToFeature(cards[featuredCardId - 1])
+    console.log(featuredCard)
+  } 
   return (
-    <div className=''>
-      <div className=''>
-      <label>Card Names: </label>
-      <select value={featuredCardId} default={featuredCardId} onChange={e => setFeaturedCardId(e.target.value)}>
-        {cards.map((card)=> 
-          <option key={card.id} value={card.id}>{card.char_name}</option>)}
-      </select>
+    <div id='list' className=''>       
+      <div className='grid grid-cols-1 w-8/12 m-auto md:w-full md:grid-cols-10 gap-2 m-5'>
+        <div className='col-start-1 md:col-start-3 col-span-1 md:col-span-3'>
+        <select className='bg-slate-200 p-3 rounded-sm w-full' value={featuredCardId} default={featuredCardId} onChange={e => setFeaturedCardId(e.target.value)}>
+          {cards.map((card)=> 
+            <option key={card.id} value={card.id}>{card.char_name}</option>)}
+        </select>
+        </div>
+        <div className='col-start-1 md:col-start-6 col-span-1 md:col-span-3'>
+        <button className='bg-neutral-500 text-white font-bold p-3 rounded hover:bg-orange-400 w-full' onClick={handleClick}>Update</button>
+        </div>
       </div>
-      <FeatureCard cards={cards} featuredCardId={featuredCardId} />
-    </div>
+      <FeatureCard cardToFeature={cardToFeature} />
+    </div>  
   );
 }
 
-function FeatureCard({cards, featuredCardId}) {
-  console.log(cards);
-  //const cardsList = cards;
-  const [cardToFeature, setCardToFeature] = useState(cards[0]);
-  console.log(featuredCardId);
-  function handleClick (){
-    let featuredCard = cards.filter(card => card.id === featuredCardId);
-    //console.log('Feature cards from handleClick :' );
-    //console.log(cards[featuredCardId-1]);
-    setCardToFeature(cards[featuredCardId-1]);
-    //console.log(cardToFeature); //1st time - array of length 1 contains 1 card object matching the id# //2nd time -  
-}  
+function FeatureCard({cardToFeature}) {  
   return (
-    <>
-      <button className='bg-neutral-500 text-white font-bold p-3 rounded hover:bg-orange-400' onClick={handleClick}>Update</button>
-      <div className='stats-box'>
-        <img className='feature-image' src={cardToFeature.image} />
-        <ul>
-          <li><label className='stat-category'>Series: </label>{cardToFeature.collection}</li>        
-          <li><label className='stat-category'>Name: </label>{cardToFeature.char_name}</li>
-          <li><label className='stat-category'>Age: </label>{cardToFeature.age}</li>
-          <li><label className='stat-category'>Species: </label>{cardToFeature.species}</li>
-          <li><label className='stat-category'>Planet: </label>{cardToFeature.home_planet}</li>
-          <li><label className='stat-category'>Allegiance: </label>{cardToFeature.faction}</li>
-          <li><label className='stat-category'>Strength: </label>{cardToFeature.strength}</li>
+      <div className='grid grid-cols-1 lg:grid-cols-5'>
+        <img className='col-span-3 rounded-xl w-8/12 justify-center m-auto my-2' src={cardToFeature.image} />
+        <ul className='p-4 sm:justify-center m-auto md:justify-start'>
+          <li><span><label className='font-bold'>Series: </label></span>{cardToFeature.collection}</li>        
+          <li><label className='font-bold'>Name: </label>{cardToFeature.char_name}</li>
+          <li><label className='font-bold'>Age: </label>{cardToFeature.age}</li>
+          <li><label className='font-bold'>Species: </label>{cardToFeature.species}</li>
+          <li><label className='font-bold'>Planet: </label>{cardToFeature.home_planet}</li>
+          <li><label className='font-bold'>Allegiance: </label>{cardToFeature.faction}</li>
+          <li><label className='font-bold'>Strength: </label>{cardToFeature.strength}</li>
         </ul>
       </div>
-    </>
+    
   );
 }
 
 function Card( {cards}) {
   //console.log(cards)
   return (
-    <div className='container'>
+    <div className='flex'>
+    <div className='grid grid-col-1 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-4 m-10'>
       {cards.map((card)=>
-        <div key={card.id} className='card'>
-          <h2>{card.char_name}</h2>
-          <img src={card.image} alt='image' />
+        <div key={card.id} className='bg-slate-300 p-4 rounded-xl opacity-50 hover:opacity-100'>
+          <h2 className='font-bold'>{card.char_name}</h2>
+          <img className='rounded-lg grayscale hover:grayscale-0 hover:z-10' src={card.image} alt='image' />
           <p>{card.bio}</p>
       </div>
-
-      )}
+     )}
       
+    </div>
     </div>
   )
 }
