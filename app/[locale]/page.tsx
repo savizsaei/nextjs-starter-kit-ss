@@ -26,9 +26,11 @@ export default async function HomePage() {
     <>
       <main>
       <HeroSection id="hero" />
-        <ArtGallery id="art" /> {/* Render the ArtGallery component */}
-        <Form/>
-        {/* <HeroSection id="hero" />
+      <ArtGallery id="art" />
+      <ArtGallery id="contact" />
+      <Form/>
+        {/* 
+        
         <FeaturesSection id="features" />
         <StackSection id="stack" />
         <ComponentsSection id="components" />

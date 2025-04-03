@@ -29,25 +29,26 @@ interface NavItem {
   href?: string;
 }
 const NAV_ITEMS: Array<NavItem> =  [ {
-      label: 'home',
-      href: '#hero',
-    },
-    {
-      label: 'artGallery',
-      href: '#art',
-    },
-    {
-      label: 'features',
-      href: '#features',
-    },
-    {
-      label: 'techStack',
-      href: '#stack', },
-      {
-        label: 'contact',
-        href: '/contact', // GC I am guessing this s a relative link, it worked. added to jump to new page
-      },
-  ];
+  label: 'home',
+  href: '#hero',
+},
+{
+  label: 'artGallery',
+  href: '#art',
+},
+{
+  label: 'features',
+  href: '#features',
+},
+{
+  label: 'techStack',
+  href: '#stack',
+},
+{
+  label: 'contact',
+  href: '/contact',
+},
+];
 
 const DesktopSubNav = ({ label, href }: NavItem) => {
   return (
