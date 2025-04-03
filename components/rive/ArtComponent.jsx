@@ -2,6 +2,7 @@
 
 import { useRive } from '@rive-app/react-canvas';
 import { useState } from 'react';
+import Image from 'next/image'
 
 const cards = [
   {
@@ -236,23 +237,23 @@ const cards = [
   },
   {
     id: 7,
-    collection: 'Regular Folk',
+    collection: 'Aliens',
     char_name: 'Momo',
-    age: 78,
-    species: 'human',
-    home_planet: 'Earth',
-    faction: 'Good',
+    age: 28,
+    species: 'Ubunamite',
+    home_planet: 'Ubunium',
+    faction: 'Neutral',
     image: './images/Monster.png',
-    strength: 2,
-    height_cm: 180,
-    weight_lbs: 160,
-    hp: 2,
-    energy: 4,
-    attack_power: 3,
-    intelligence: 5,
-    wisdom: 7,
-    integrity: 6,
-    charisma: 6,
+    strength: 5,
+    height_cm: 280,
+    weight_lbs: 3104,
+    hp: 5,
+    energy: 5,
+    attack_power: 6,
+    intelligence: 3,
+    wisdom: 4,
+    integrity: 76,
+    charisma: 3,
     communication: 5,
     dexterity: 3,
     rhythm: 4,
@@ -382,8 +383,8 @@ function RiveSimple() {
 function List({cards}) {
   const [featuredCardId, setFeaturedCardId] = useState(1);
   return (
-    <div>
-      <div className='select-box'>
+    <div className=''>
+      <div className=''>
       <label>Card Names: </label>
       <select value={featuredCardId} default={featuredCardId} onChange={e => setFeaturedCardId(e.target.value)}>
         {cards.map((card)=> 
@@ -409,7 +410,7 @@ function FeatureCard({cards, featuredCardId}) {
 }  
   return (
     <>
-      <button onClick={handleClick}>Update</button>
+      <button className='bg-neutral-500 text-white font-bold p-3 rounded hover:bg-orange-400' onClick={handleClick}>Update</button>
       <div className='stats-box'>
         <img className='feature-image' src={cardToFeature.image} />
         <ul>

@@ -16,7 +16,7 @@ export default async function HomePage() {
   return (
     <>
       <main>
-        <ArtComponent />
+        <ArtComponent id="art" />
         <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />
