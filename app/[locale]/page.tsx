@@ -26,15 +26,15 @@ export default async function HomePage() {
     <>
       <main>
       <Form/>
-      <HeroSection id="hero" />
+      {/* <HeroSection id="hero" /> */}
       <ArtGallery id="art" />
-        <FeaturesSection id="features" />
+        {/* <FeaturesSection id="features" />
         <StackSection id="stack" />
         <ComponentsSection id="components" />
         <DocsSection id="docs" />
         <InstallationSection id="install" />
         <TestimonialsSection id="testimonial" />
-        <FooterSection id="footer" /> 
+        <FooterSection id="footer" />  */}
       </main>
     </>
   );
