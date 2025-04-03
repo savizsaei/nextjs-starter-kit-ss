@@ -8,12 +8,16 @@ import StackSection from './landing/sections/StackSection';
 // import { getIntl } from '@/i18n/request';
 // Import ExampleComponent
 //import ClientWrapper from '@/components/examples/ClientWrapper';
+// import { useTranslations } from 'next-intl';
+
+import Link from 'next/link';
+import ComponentsSection from './landing/sections/ComponentsSection';
+import DocsSection from './landing/sections/DocsSection';
+import InstallationSection from './landing/sections/InstallationSection';
+import TestimonialsSection from './landing/sections/TestimonialsSection';
+import FooterSection from './landing/sections/FooterSection';
+import Form from '../../components/Form/Form.js';
 import ArtGallery from '../../components/ArtGallary/ArtGallery1'; // Adjusted import path
-import ComponentsSection from './landing/sections/ComponentsSection'; // Import ComponentsSection
-import DocsSection from './landing/sections/DocsSection'; // Import DocsSection
-import FooterSection from './landing/sections/FooterSection'; // Import FooterSection
-import InstallationSection from './landing/sections/InstallationSection'; // Import InstallationSection
-import TestimonialsSection from './landing/sections/TestimonialsSection'; // Import TestimonialsSection
 export default async function HomePage() {
   // const t = useTranslations('HomePage');
   // const intl = await getIntl(locale);
@@ -21,15 +25,17 @@ export default async function HomePage() {
   return (
     <>
       <main>
-        <HeroSection id="hero" />
+      <HeroSection id="hero" />
         <ArtGallery id="art" /> {/* Render the ArtGallery component */}
+        <Form/>
+        {/* <HeroSection id="hero" />
         <FeaturesSection id="features" />
         <StackSection id="stack" />
         <ComponentsSection id="components" />
         <DocsSection id="docs" />
         <InstallationSection id="install" />
         <TestimonialsSection id="testimonial" />
-        <FooterSection id="footer" /> 
+        <FooterSection id="footer" /> */}
       </main>
     </>
   );
