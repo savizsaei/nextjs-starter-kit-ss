@@ -27,7 +27,6 @@ export default async function HomePage() {
       <main>
       <HeroSection id="hero" />
       <ArtGallery id="art" />
-      <ArtGallery id="contact" />
       <Form/>
         {/* 
         
