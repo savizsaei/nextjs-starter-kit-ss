@@ -46,7 +46,7 @@ const NAV_ITEMS: Array<NavItem> =  [ {
 },
 {
   label: 'contact',
-  href: '/contact',
+  href: '#contact',
 },
 ];
 
