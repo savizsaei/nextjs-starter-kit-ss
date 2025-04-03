@@ -28,14 +28,12 @@ interface NavItem {
   children?: Array<NavItem>;
   href?: string;
 }
-const NAV_ITEMS: Array<NavItem> =  [ {
+const NAV_ITEMS: Array<NavItem> =  [ 
 //   label: 'home',
 //   href: '#hero',
 // },
 //{
-  label: 'artGallery',
-  href: '#art',
-},
+
 // {
 //   label: 'features',
 //   href: '#features',
@@ -47,6 +45,9 @@ const NAV_ITEMS: Array<NavItem> =  [ {
 {
   label: 'contact',
   href: '#contact',
+},
+{ label: 'artGallery',
+  href: '#art',
 },
 ];
 
