@@ -34,10 +34,6 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '#hero',
   },
   {
-    label: 'artGallery',
-    href: '#art',
-  },
-  {
     label: 'features',
     href: '#features',
   },
